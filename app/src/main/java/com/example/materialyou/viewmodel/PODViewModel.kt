@@ -2,6 +2,7 @@ package com.example.materialyou.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.materialyou.BuildConfig
 import com.example.materialyou.model.IRepository
 import com.example.materialyou.model.IUniversalCallback
 import com.example.materialyou.model.RetrofitPODImpl
@@ -17,9 +18,9 @@ class PODViewModel(
         return liveData
     }
 
-    fun getPictureHD(urlString: String){
+    fun getPictureHD(){
         liveData.value = PODViewModelAppState.Loading
-        retrofitPODImpl.getPictureOfTheDay(urlString, callback)
+        retrofitPODImpl.getPictureOfTheDay(BuildConfig.NASA_API_KEY, callback)
     }
 
     private val callback = object : IUniversalCallback {
