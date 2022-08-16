@@ -2,7 +2,7 @@ package com.example.materialyou
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.materialyou.ui.main.MainFragment
+import com.example.materialyou.view.PODFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.container, MainFragment.newInstance())
+                .replace(R.id.container, PODFragment.newInstance())
                 .commitNow()
         }
     }

@@ -1,4 +1,4 @@
-package com.example.materialyou.ui.main
+package com.example.materialyou.view
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -7,14 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.materialyou.R
+import com.example.materialyou.viewmodel.PODViewModel
 
-class MainFragment : Fragment() {
+class PODFragment : Fragment() {
 
     companion object {
-        fun newInstance() = MainFragment()
+        fun newInstance() = PODFragment()
     }
 
-    private lateinit var viewModel: MainViewModel
+    private lateinit var viewModel: PODViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,7 +26,7 @@ class MainFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(PODViewModel::class.java)
         // TODO: Use the ViewModel
     }
 
