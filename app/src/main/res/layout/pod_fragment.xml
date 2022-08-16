@@ -12,7 +12,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:layout_constraintTop_toTopOf="parent"
-    android:layout_margin="4dp"
-    app:srcCompat="@android:drawable/ic_delete"/>
+    android:layout_margin="4dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
