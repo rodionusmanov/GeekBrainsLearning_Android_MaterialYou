@@ -1,5 +1,7 @@
 package com.example.materialyou.view
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -57,6 +59,11 @@ class PODFragment : Fragment() {
             viewModel.getLiveData().observe(viewLifecycleOwner) {
                 renderData(it)
             }
+        }
+        binding.wikiInputLayout.setEndIconOnClickListener{
+            startActivity(Intent(Intent.ACTION_VIEW).apply {
+                data = Uri.parse("https://en.wikipedia.org/wiki/${binding.wikiInputText.text.toString()}")
+            })
         }
     }
 

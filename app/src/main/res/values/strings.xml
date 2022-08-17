@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MaterialYou</string>
+    <string name="wiki_hint">Поиск в Википедии</string>
 </resources>
