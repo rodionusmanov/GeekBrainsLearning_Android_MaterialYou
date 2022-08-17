@@ -6,6 +6,7 @@ import com.example.materialyou.BuildConfig
 import com.example.materialyou.model.IRepository
 import com.example.materialyou.model.IUniversalCallback
 import com.example.materialyou.model.RetrofitPODImpl
+import com.example.materialyou.model.dataTransferObject.PODDataTransferObject
 import java.io.IOException
 
 class PODViewModel(
@@ -18,14 +19,14 @@ class PODViewModel(
         return liveData
     }
 
-    fun getPictureHD(){
+    fun getInfoFromServer(){
         liveData.value = PODViewModelAppState.Loading
         retrofitPODImpl.getPictureOfTheDay(BuildConfig.NASA_API_KEY, callback)
     }
 
     private val callback = object : IUniversalCallback {
-        override fun onResponse(string: String) {
-            liveData.postValue(PODViewModelAppState.Success(string))
+        override fun onResponse(podDataTransferObject: PODDataTransferObject) {
+            liveData.postValue(PODViewModelAppState.Success(podDataTransferObject))
         }
 
         override fun onFailure(e: IOException) {

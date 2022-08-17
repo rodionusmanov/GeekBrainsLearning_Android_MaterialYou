@@ -26,7 +26,7 @@ class RetrofitPODImpl : IRepository{
                 response: Response<PODDataTransferObject>
             ) {
                 if (response.isSuccessful && response.body() != null) {
-                    callback.onResponse(convertToHdUrl(response.body()!!))
+                    callback.onResponse(response.body()!!)
                 }
             }
 

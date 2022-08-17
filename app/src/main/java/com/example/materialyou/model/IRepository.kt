@@ -1,5 +1,6 @@
 package com.example.materialyou.model
 
+import com.example.materialyou.model.dataTransferObject.PODDataTransferObject
 import java.io.IOException
 
 interface IRepository {
@@ -7,6 +8,6 @@ interface IRepository {
 }
 
 interface IUniversalCallback {
-    fun onResponse(string: String)
+    fun onResponse(podDataTransferObject: PODDataTransferObject)
     fun onFailure(e: IOException)
 }
