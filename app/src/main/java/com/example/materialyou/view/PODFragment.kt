@@ -3,9 +3,7 @@ package com.example.materialyou.view
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.FrameLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -13,6 +11,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import coil.load
+import com.example.materialyou.MainActivity
 import com.example.materialyou.R
 import com.example.materialyou.databinding.PodFragmentBinding
 import com.example.materialyou.viewmodel.PODViewModel
@@ -50,6 +49,11 @@ class PODFragment : Fragment() {
         _binding = null
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu_bottom_bar, menu)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -65,6 +69,7 @@ class PODFragment : Fragment() {
                 data = Uri.parse("https://en.wikipedia.org/wiki/${binding.wikiInputText.text.toString()}")
             })
         }
+        setBottomAppBar(view)
     }
 
     private fun renderData(podViewModelAppState: PODViewModelAppState?) {
@@ -99,5 +104,11 @@ class PODFragment : Fragment() {
     private fun setBottomSheetBehavior(bottomSheet: ConstraintLayout) {
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+    }
+
+    private fun setBottomAppBar(view: View){
+        val context = activity as MainActivity
+        context.setSupportActionBar(view.findViewById(R.id.pod_bottom_app_bar))
+        setHasOptionsMenu(true)
     }
 }
