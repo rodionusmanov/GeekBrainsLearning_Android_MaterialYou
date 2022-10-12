@@ -25,7 +25,7 @@
             app:endIconTint="@color/black"
             app:startIconCheckable="false"
             app:startIconDrawable="@drawable/wiki_icon_input_layout"
-            app:startIconTint="@color/aspid_blue">
+            app:startIconTint="?attr/darkColor">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/wiki_input_text"
@@ -52,7 +52,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:backgroundTint="@color/aspid_blue"
+        android:backgroundTint="?attr/darkColor"
         app:navigationIcon="@android:drawable/ic_menu_sort_by_size"
         app:fabCradleRoundedCornerRadius="20dp"
         app:fabCradleMargin="4dp"/>
@@ -61,7 +61,7 @@
         android:id="@+id/pod_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/purple_700"
+        android:backgroundTint="?attr/darkColor"
         app:layout_anchor="@id/pod_bottom_app_bar"
         app:srcCompat="@android:drawable/ic_menu_add"
         app:tint="@color/white"/>

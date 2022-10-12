@@ -1,7 +1,7 @@
 package com.example.materialyou
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.materialyou.databinding.ActivityMainBinding
 import com.example.materialyou.view.PODFragment
 

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/repository_chooser"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/change_theme_fragment_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/text_header_style"
+        android:text="@string/choose_theme"/>
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/default_theme_chip"
+        style="@style/default_theme_chip_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/monochrome_theme_chip"
+        style="@style/monochrome_theme_chip_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

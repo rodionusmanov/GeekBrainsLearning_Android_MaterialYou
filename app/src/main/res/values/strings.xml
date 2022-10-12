@@ -3,4 +3,7 @@
     <string name="wiki_hint">Поиск в Википедии</string>
     <string name="button_left">button left</string>
     <string name="button_right">button right</string>
+    <string name="default_theme">Default theme</string>
+    <string name="monochrome_theme">Monochrome theme</string>
+    <string name="choose_theme">Choose theme</string>
 </resources>
