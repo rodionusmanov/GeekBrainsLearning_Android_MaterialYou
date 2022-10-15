@@ -1,6 +1,5 @@
 package com.example.materialyou.view
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -27,8 +26,32 @@ class ThemeChangeFragment : DialogFragment() {
             dismiss()
         }
 
+        view.findViewById<Chip>(R.id.default_dark_theme_chip).setOnClickListener {
+            themeState = "default_dark_theme"
+            requireActivity().recreate()
+            dismiss()
+        }
+
         view.findViewById<Chip>(R.id.monochrome_theme_chip).setOnClickListener {
             themeState = "monochrome_theme"
+            requireActivity().recreate()
+            dismiss()
+        }
+
+        view.findViewById<Chip>(R.id.monochrome_dark_theme_chip).setOnClickListener {
+            themeState = "monochrome_dark_theme"
+            requireActivity().recreate()
+            dismiss()
+        }
+
+        view.findViewById<Chip>(R.id.green_theme_chip).setOnClickListener {
+            themeState = "amazon_green_theme"
+            requireActivity().recreate()
+            dismiss()
+        }
+
+        view.findViewById<Chip>(R.id.green_dark_theme_chip).setOnClickListener {
+            themeState = "amazon_green_dark_theme"
             requireActivity().recreate()
             dismiss()
         }

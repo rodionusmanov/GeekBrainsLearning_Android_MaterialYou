@@ -2,7 +2,6 @@ package com.example.materialyou.model
 
 import com.example.materialyou.BuildConfig
 import com.example.materialyou.model.dataTransferObject.PODDataTransferObject
-import com.example.materialyou.utils.convertToHdUrl
 import com.google.gson.GsonBuilder
 import retrofit2.Call
 import retrofit2.Callback
@@ -33,8 +32,6 @@ class RetrofitPODImpl : IRepository{
             override fun onFailure(call: Call<PODDataTransferObject>, t: Throwable) {
 //                TODO("Not yet implemented")
             }
-
         })
     }
-
 }

@@ -20,8 +20,32 @@
         android:layout_height="wrap_content"/>
 
     <com.google.android.material.chip.Chip
+        android:id="@+id/default_dark_theme_chip"
+        style="@style/default_dark_theme_chip_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.chip.Chip
         android:id="@+id/monochrome_theme_chip"
         style="@style/monochrome_theme_chip_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/monochrome_dark_theme_chip"
+        style="@style/monochrome_dark_theme_chip_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/green_theme_chip"
+        style="@style/green_theme_chip_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/green_dark_theme_chip"
+        style="@style/green_dark_theme_chip_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 </LinearLayout>
