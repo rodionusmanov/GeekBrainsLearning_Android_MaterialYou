@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="text_body_style">
+        <item name="android:textSize">@dimen/body_text_size</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:paddingStart">@dimen/body_padding</item>
+        <item name="android:paddingEnd">@dimen/body_padding</item>
+    </style>
+
+    <style name="text_header_style">
+        <item name="android:textSize">@dimen/header_text_size</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:paddingStart">@dimen/header_padding</item>
+        <item name="android:paddingEnd">@dimen/header_padding</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginTop">@dimen/header_margin_top</item>
+        <item name="android:gravity">center</item>
+
+    </style>
+
+    <style name="default_theme_chip_style">
+        <item name="android:text">@string/default_theme</item>
+        <item name="android:textSize">@dimen/header_text_size</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:paddingStart">@dimen/body_padding</item>
+        <item name="android:paddingEnd">@dimen/body_padding</item>
+        <item name="android:backgroundTint">@color/barvinok_pervansh</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="default_dark_theme_chip_style">
+        <item name="android:text">@string/default_dark_theme</item>
+        <item name="android:textSize">@dimen/header_text_size</item>
+        <item name="android:textColor">@color/barvinok_pervansh</item>
+        <item name="android:paddingStart">@dimen/body_padding</item>
+        <item name="android:paddingEnd">@dimen/body_padding</item>
+        <item name="android:backgroundTint">@color/aspid_blue</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="monochrome_theme_chip_style">
+        <item name="android:text">@string/monochrome_theme</item>
+        <item name="android:textSize">@dimen/header_text_size</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:paddingStart">@dimen/body_padding</item>
+        <item name="android:paddingEnd">@dimen/body_padding</item>
+        <item name="android:backgroundTint">@color/light_grey</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="monochrome_dark_theme_chip_style">
+        <item name="android:text">@string/monochrome_dark_theme</item>
+        <item name="android:textSize">@dimen/header_text_size</item>
+        <item name="android:textColor">@color/light_grey</item>
+        <item name="android:paddingStart">@dimen/body_padding</item>
+        <item name="android:paddingEnd">@dimen/body_padding</item>
+        <item name="android:backgroundTint">@color/dark_grey</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="green_theme_chip_style">
+        <item name="android:text">@string/amazon_green_theme</item>
+        <item name="android:textSize">@dimen/header_text_size</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:paddingStart">@dimen/body_padding</item>
+        <item name="android:paddingEnd">@dimen/body_padding</item>
+        <item name="android:backgroundTint">@color/amazon_green_light</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="green_dark_theme_chip_style">
+        <item name="android:text">@string/amazon_green_dark_theme</item>
+        <item name="android:textSize">@dimen/header_text_size</item>
+        <item name="android:textColor">@color/amazon_green_light</item>
+        <item name="android:paddingStart">@dimen/body_padding</item>
+        <item name="android:paddingEnd">@dimen/body_padding</item>
+        <item name="android:backgroundTint">@color/amazon_green</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <string name="amazon_green_dark_theme">Amazon green dark theme</string>
+</resources>

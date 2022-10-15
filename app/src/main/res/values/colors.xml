@@ -10,4 +10,10 @@
 
     <color name="barvinok_pervansh">#FFCCCCFF</color>
     <color name="aspid_blue">#FF6A5ACD</color>
+
+    <color name="dark_grey">#FF555555</color>
+    <color name="light_grey">#FFAAAAAA</color>
+
+    <color name="amazon_green">#FF3B7A57</color>
+    <color name="amazon_green_light">#FFB6CDC0</color>
 </resources>
