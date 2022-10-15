@@ -90,6 +90,11 @@ class PODFragment : Fragment() {
             dialog.show(requireActivity().supportFragmentManager, "change theme")
             true
         }
+        R.id.app_bar_view_pager -> {
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.container, Fragment()).addToBackStack(null).commit()
+            true
+        }
         else -> {
             super.onOptionsItemSelected(item)
         }
