@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import com.example.materialyou.R
 import com.example.materialyou.databinding.BottomNavigationViewActivityBinding
 import com.example.materialyou.view.PODFragment
+import com.example.materialyou.view.ThemeChangeFragment
 
 class BottomNavigationViewActivity : AppCompatActivity() {
     private lateinit var binding: BottomNavigationViewActivityBinding
@@ -14,6 +15,7 @@ class BottomNavigationViewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = BottomNavigationViewActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        navigateTo(PlanetsFragment())
 
         binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
@@ -25,11 +27,10 @@ class BottomNavigationViewActivity : AppCompatActivity() {
                     navigateTo(PODFragment())
                     true
                 }
-                /*Функционал в разработке
-                R.id.bottom_solar_system -> {
-                    navigateTo(FragmentSolarSystem())
+                R.id.bottom_change_theme -> {
+                    navigateTo(ThemeChangeFragment())
                     false
-                }*/
+                }
                 else -> true
             }
             true

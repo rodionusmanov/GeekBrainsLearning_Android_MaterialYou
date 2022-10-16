@@ -13,7 +13,7 @@
         android:title="@string/picture_of_the_day"/>
 
     <item
-        android:id="@+id/bottom_solar_system"
-        android:icon="@android:drawable/ic_lock_lock"
-        android:title="@string/closed"/>
+        android:id="@+id/bottom_change_theme"
+        android:icon="@android:drawable/ic_menu_edit"
+        android:title="@string/choose_theme"/>
 </menu>
