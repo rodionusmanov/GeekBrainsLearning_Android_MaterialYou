@@ -8,12 +8,11 @@ import androidx.fragment.app.Fragment
 import com.example.materialyou.R
 
 class FragmentEarth() : Fragment() {
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         return inflater.inflate(R.layout.fragment_earth, container, false)
     }
 }
