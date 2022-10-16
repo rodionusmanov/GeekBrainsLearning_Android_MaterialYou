@@ -12,10 +12,10 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import coil.load
-import com.example.materialyou.MainActivity
 import com.example.materialyou.R
 import com.example.materialyou.databinding.PodFragmentBinding
 import com.example.materialyou.utils.themeState
+import com.example.materialyou.view.navigation.BottomNavigationViewActivity
 import com.example.materialyou.viewmodel.PODViewModel
 import com.example.materialyou.viewmodel.PODViewModelAppState
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -90,6 +90,9 @@ class PODFragment : Fragment() {
             dialog.show(requireActivity().supportFragmentManager, "change theme")
             true
         }
+        R.id.app_bar_view_pager -> {
+            true
+        }
         else -> {
             super.onOptionsItemSelected(item)
         }
@@ -111,8 +114,6 @@ class PODFragment : Fragment() {
             })
         }
         setBottomAppBar(view)
-
-//        binding.
     }
 
     private fun renderData(podViewModelAppState: PODViewModelAppState?) {
@@ -151,7 +152,7 @@ class PODFragment : Fragment() {
     }
 
     private fun setBottomAppBar(view: View) {
-        val context = activity as MainActivity
+        val context = activity as BottomNavigationViewActivity
         context.setSupportActionBar(view.findViewById(R.id.pod_bottom_app_bar))
         setHasOptionsMenu(true)
     }

@@ -9,4 +9,10 @@
     <string name="amazon_green_theme">Amazon green theme</string>
     <string name="default_dark_theme">Default dark theme</string>
     <string name="monochrome_dark_theme">Monochrome dark theme</string>
+    <string name="earth">Earth</string>
+    <string name="mars">Mars</string>
+    <string name="solar_system">Solar system</string>
+    <string name="picture_of_the_day">Picture of the day</string>
+    <string name="planets">Planets</string>
+    <string name="closed">Closed</string>
 </resources>
