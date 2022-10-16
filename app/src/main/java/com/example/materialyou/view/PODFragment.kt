@@ -91,8 +91,6 @@ class PODFragment : Fragment() {
             true
         }
         R.id.app_bar_view_pager -> {
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.container, Fragment()).addToBackStack(null).commit()
             true
         }
         else -> {
@@ -116,8 +114,6 @@ class PODFragment : Fragment() {
             })
         }
         setBottomAppBar(view)
-
-//        binding.
     }
 
     private fun renderData(podViewModelAppState: PODViewModelAppState?) {
