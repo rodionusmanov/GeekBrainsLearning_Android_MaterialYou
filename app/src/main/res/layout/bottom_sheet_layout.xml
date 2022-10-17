@@ -8,7 +8,7 @@
     android:background="?attr/lightColor"
     android:visibility="visible"
     app:behavior_hideable="false"
-    app:behavior_peekHeight="150dp"
+    app:behavior_peekHeight="80dp"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
     <View

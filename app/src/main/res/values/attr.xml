@@ -2,4 +2,5 @@
 <resources>
     <attr name="lightColor" format="reference"/>
     <attr name="darkColor" format="reference"/>
+    <attr name="textViewTextColor" format="reference"/>
 </resources>

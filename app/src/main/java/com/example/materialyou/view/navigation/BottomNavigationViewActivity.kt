@@ -2,10 +2,12 @@ package com.example.materialyou.view.navigation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import com.example.materialyou.R
 import com.example.materialyou.databinding.BottomNavigationViewActivityBinding
 import com.example.materialyou.utils.bottomNavigationViewState
+import com.example.materialyou.utils.themeState
 import com.example.materialyou.view.PODFragment
 import com.example.materialyou.view.ThemeChangeFragment
 
@@ -14,6 +16,36 @@ class BottomNavigationViewActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        when (themeState) {
+            "default_theme" -> {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                setTheme(R.style.Theme_MaterialYou)
+            }
+            "default_dark_theme" -> {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                setTheme(R.style.Theme_MaterialYou)
+            }
+            "monochrome_theme" -> {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                setTheme(R.style.MonoTheme)
+            }
+            "monochrome_dark_theme" -> {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                setTheme(R.style.MonoTheme)
+            }
+            "amazon_green_theme" -> {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                setTheme(R.style.GreenTheme)
+            }
+            "amazon_green_dark_theme" -> {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                setTheme(R.style.GreenTheme)
+            }
+            else -> {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                setTheme(R.style.Theme_MaterialYou)
+            }
+        }
         binding = BottomNavigationViewActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
         navigateTo(bottomNavigationViewState)

@@ -81,7 +81,6 @@ class PODFragment : Fragment() {
                     Uri.parse("https://en.wikipedia.org/wiki/${binding.wikiInputText.text.toString()}")
             })
         }
-        setBottomAppBar(view)
     }
 
     private fun renderData(podViewModelAppState: PODViewModelAppState?) {
@@ -117,11 +116,5 @@ class PODFragment : Fragment() {
     private fun setBottomSheetBehavior(bottomSheet: ConstraintLayout) {
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
-    }
-
-    private fun setBottomAppBar(view: View) {
-        val context = activity as BottomNavigationViewActivity
-        context.setSupportActionBar(view.findViewById(R.id.pod_bottom_app_bar))
-        setHasOptionsMenu(true)
     }
 }
