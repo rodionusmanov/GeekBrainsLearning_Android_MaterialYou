@@ -11,6 +11,8 @@ import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.example.materialyou.R
 import com.example.materialyou.databinding.PodFragmentCoordinatorLayoutBinding
+import com.example.materialyou.utils.wikiRequest
+import com.example.materialyou.view.layouts.WikiSearchFragment
 import com.example.materialyou.viewmodel.PODViewModel
 import com.example.materialyou.viewmodel.PODViewModelAppState
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -71,13 +73,16 @@ class PODFragment : Fragment() {
             viewModel.getLiveData().observe(viewLifecycleOwner) {
                 renderData(it)
             }
-        }/*
-        binding.wikiInputLayout.setEndIconOnClickListener {
-            startActivity(Intent(Intent.ACTION_VIEW).apply {
-                data =
-                    Uri.parse("https://en.wikipedia.org/wiki/${binding.wikiInputText.text.toString()}")
-            })
-        }*/
+        }
+
+        binding.wikiSearch.setOnClickListener {
+            val bsHeader: TextView =
+                requireActivity().findViewById<TextView>(R.id.bottom_sheet_description_header)
+            wikiRequest = bsHeader.text.toString()
+            val dialog = WikiSearchFragment()
+            dialog.show(requireActivity().supportFragmentManager, "wiki request")
+            true
+        }
     }
 
     private fun renderData(podViewModelAppState: PODViewModelAppState?) {
