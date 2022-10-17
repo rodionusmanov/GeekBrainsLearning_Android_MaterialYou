@@ -1,3 +1,7 @@
 package com.example.materialyou.utils
 
-var themeState: String = "default_theme"
+import androidx.fragment.app.Fragment
+import com.example.materialyou.view.PODFragment
+import com.example.materialyou.view.navigation.PlanetsFragment
+
+var bottomNavigationViewState: Fragment = PlanetsFragment()

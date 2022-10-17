@@ -7,14 +7,12 @@ import android.view.*
 import android.widget.FrameLayout
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.example.materialyou.R
 import com.example.materialyou.databinding.PodFragmentBinding
-import com.example.materialyou.utils.themeState
 import com.example.materialyou.view.navigation.BottomNavigationViewActivity
 import com.example.materialyou.viewmodel.PODViewModel
 import com.example.materialyou.viewmodel.PODViewModelAppState
@@ -40,36 +38,6 @@ class PODFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        when (themeState) {
-            "default_theme" -> {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                requireActivity().setTheme(R.style.Theme_MaterialYou)
-            }
-            "default_dark_theme" -> {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                requireActivity().setTheme(R.style.Theme_MaterialYou)
-            }
-            "monochrome_theme" -> {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                requireActivity().setTheme(R.style.MonoTheme)
-            }
-            "monochrome_dark_theme" -> {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                requireActivity().setTheme(R.style.MonoTheme)
-            }
-            "amazon_green_theme" -> {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                requireActivity().setTheme(R.style.GreenTheme)
-            }
-            "amazon_green_dark_theme" -> {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                requireActivity().setTheme(R.style.GreenTheme)
-            }
-            else -> {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                requireActivity().setTheme(R.style.Theme_MaterialYou)
-            }
-        }
         _binding = PodFragmentBinding.inflate(inflater)
         return binding.podFragment
     }

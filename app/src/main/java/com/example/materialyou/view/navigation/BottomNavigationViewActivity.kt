@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.materialyou.R
 import com.example.materialyou.databinding.BottomNavigationViewActivityBinding
+import com.example.materialyou.utils.bottomNavigationViewState
 import com.example.materialyou.view.PODFragment
 import com.example.materialyou.view.ThemeChangeFragment
 
@@ -15,7 +16,7 @@ class BottomNavigationViewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = BottomNavigationViewActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        navigateTo(PlanetsFragment())
+        navigateTo(bottomNavigationViewState)
 
         binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
