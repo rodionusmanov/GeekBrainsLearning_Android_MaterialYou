@@ -10,6 +10,7 @@ import com.example.materialyou.utils.bottomNavigationViewState
 import com.example.materialyou.utils.themeState
 import com.example.materialyou.view.PODFragment
 import com.example.materialyou.view.ThemeChangeFragment
+import com.example.materialyou.view.layouts.MotionScenesFragment
 
 class BottomNavigationViewActivity : AppCompatActivity() {
     private lateinit var binding: BottomNavigationViewActivityBinding
@@ -62,6 +63,10 @@ class BottomNavigationViewActivity : AppCompatActivity() {
                 }
                 R.id.bottom_change_theme -> {
                     navigateTo(ThemeChangeFragment())
+                    false
+                }
+                R.id.motion_scenes -> {
+                    navigateTo(MotionScenesFragment())
                     false
                 }
                 else -> true

@@ -16,4 +16,9 @@
         android:id="@+id/bottom_change_theme"
         android:icon="@android:drawable/ic_menu_edit"
         android:title="@string/choose_theme"/>
+
+    <item
+        android:id="@+id/motion_scenes"
+        android:icon="@android:drawable/ic_media_play"
+        android:title="@string/motion_scenes"/>
 </menu>

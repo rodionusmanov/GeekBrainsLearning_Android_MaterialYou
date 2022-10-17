@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        app:constraintSetEnd="@layout/pod_motion_end"
+        app:constraintSetStart="@layout/pod_motion_start"
+        app:duration="1000">
+        <OnClick app:targetId="@+id/pod_motion_start_scene"/>
+    </Transition>
+</MotionScene>
