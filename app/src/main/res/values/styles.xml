@@ -55,6 +55,7 @@
         <item name="android:paddingStart">@dimen/body_padding</item>
         <item name="android:paddingEnd">@dimen/body_padding</item>
         <item name="android:backgroundTint">@color/dark_grey</item>
+        <item name="android:fontFamily">sans-serif</item>
         <item name="android:layout_gravity">center</item>
     </style>
 
@@ -65,6 +66,7 @@
         <item name="android:paddingStart">@dimen/body_padding</item>
         <item name="android:paddingEnd">@dimen/body_padding</item>
         <item name="android:backgroundTint">@color/amazon_green_light</item>
+        <item name="android:fontFamily">@font/bebasneueregular</item>
         <item name="android:layout_gravity">center</item>
     </style>
 
@@ -75,8 +77,7 @@
         <item name="android:paddingStart">@dimen/body_padding</item>
         <item name="android:paddingEnd">@dimen/body_padding</item>
         <item name="android:backgroundTint">@color/amazon_green</item>
+        <item name="android:fontFamily">@font/gnyrwn971</item>
         <item name="android:layout_gravity">center</item>
     </style>
-
-    <string name="amazon_green_dark_theme">Amazon green dark theme</string>
 </resources>

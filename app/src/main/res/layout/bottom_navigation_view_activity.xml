@@ -18,6 +18,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:background="?attr/lightColor"
+        app:itemTextColor="?attr/darkColor"
+        app:itemIconTint="?attr/darkColor"
         app:menu="@menu/menu_bottom_navigation_view"/>
 
     <FrameLayout

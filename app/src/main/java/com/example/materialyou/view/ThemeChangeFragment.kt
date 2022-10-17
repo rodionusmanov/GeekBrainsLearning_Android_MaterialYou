@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.DialogFragment
 import com.example.materialyou.R
+import com.example.materialyou.utils.bottomNavigationViewState
 import com.example.materialyou.utils.themeState
 import com.google.android.material.chip.Chip
 
@@ -22,36 +24,54 @@ class ThemeChangeFragment : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         view.findViewById<Chip>(R.id.default_theme_chip).setOnClickListener {
             themeState = "default_theme"
+            bottomNavigationViewState = ThemeChangeFragment()
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            requireActivity().setTheme(R.style.Theme_MaterialYou)
             requireActivity().recreate()
             dismiss()
         }
 
         view.findViewById<Chip>(R.id.default_dark_theme_chip).setOnClickListener {
             themeState = "default_dark_theme"
+            bottomNavigationViewState = ThemeChangeFragment()
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            requireActivity().setTheme(R.style.Theme_MaterialYou)
             requireActivity().recreate()
             dismiss()
         }
 
         view.findViewById<Chip>(R.id.monochrome_theme_chip).setOnClickListener {
             themeState = "monochrome_theme"
+            bottomNavigationViewState = ThemeChangeFragment()
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            requireActivity().setTheme(R.style.MonoTheme)
             requireActivity().recreate()
             dismiss()
         }
 
         view.findViewById<Chip>(R.id.monochrome_dark_theme_chip).setOnClickListener {
             themeState = "monochrome_dark_theme"
+            bottomNavigationViewState = ThemeChangeFragment()
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            requireActivity().setTheme(R.style.MonoTheme)
             requireActivity().recreate()
             dismiss()
         }
 
         view.findViewById<Chip>(R.id.green_theme_chip).setOnClickListener {
             themeState = "amazon_green_theme"
+            bottomNavigationViewState = ThemeChangeFragment()
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            requireActivity().setTheme(R.style.GreenTheme)
             requireActivity().recreate()
             dismiss()
         }
 
         view.findViewById<Chip>(R.id.green_dark_theme_chip).setOnClickListener {
             themeState = "amazon_green_dark_theme"
+            bottomNavigationViewState = ThemeChangeFragment()
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            requireActivity().setTheme(R.style.GreenTheme)
             requireActivity().recreate()
             dismiss()
         }
