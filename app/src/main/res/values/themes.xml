@@ -20,8 +20,8 @@
 
     <style name="MonoTheme" parent="Theme.MaterialYou">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/light_grey</item>
-        <item name="colorPrimaryVariant">@color/dark_grey</item>
+        <item name="colorPrimary">@color/dark_grey</item>
+        <item name="colorPrimaryVariant">@color/light_grey</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -38,8 +38,8 @@
 
     <style name="GreenTheme" parent="Theme.MaterialYou">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/amazon_green_light</item>
-        <item name="colorPrimaryVariant">@color/amazon_green</item>
+        <item name="colorPrimary">@color/amazon_green</item>
+        <item name="colorPrimaryVariant">@color/amazon_green_light</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
