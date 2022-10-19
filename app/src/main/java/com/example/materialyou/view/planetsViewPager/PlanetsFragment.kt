@@ -1,4 +1,4 @@
-package com.example.materialyou.view.navigation
+package com.example.materialyou.view.planetsViewPager
 
 import android.os.Bundle
 import android.view.LayoutInflater

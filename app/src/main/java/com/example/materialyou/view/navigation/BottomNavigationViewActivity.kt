@@ -11,6 +11,7 @@ import com.example.materialyou.utils.themeState
 import com.example.materialyou.view.PODFragment
 import com.example.materialyou.view.ThemeChangeFragment
 import com.example.materialyou.view.layouts.MotionScenesFragment
+import com.example.materialyou.view.planetsViewPager.PlanetsFragment
 
 class BottomNavigationViewActivity : AppCompatActivity() {
     private lateinit var binding: BottomNavigationViewActivityBinding

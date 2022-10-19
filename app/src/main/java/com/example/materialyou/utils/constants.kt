@@ -1,7 +1,7 @@
 package com.example.materialyou.utils
 
 import androidx.fragment.app.Fragment
-import com.example.materialyou.view.navigation.PlanetsFragment
+import com.example.materialyou.view.planetsViewPager.PlanetsFragment
 
 var wikiRequest: String = ""
 var themeState: String = "default_theme"

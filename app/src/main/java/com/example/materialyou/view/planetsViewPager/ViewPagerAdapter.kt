@@ -1,4 +1,4 @@
-package com.example.materialyou.view.navigation
+package com.example.materialyou.view.planetsViewPager
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity

@@ -2,14 +2,14 @@
 <resources>
     <style name="text_body_style">
         <item name="android:textSize">@dimen/body_text_size</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">?attr/textViewTextColor</item>
         <item name="android:paddingStart">@dimen/body_padding</item>
         <item name="android:paddingEnd">@dimen/body_padding</item>
     </style>
 
     <style name="text_header_style">
         <item name="android:textSize">@dimen/header_text_size</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">?attr/textViewTextColor</item>
         <item name="android:paddingStart">@dimen/header_padding</item>
         <item name="android:paddingEnd">@dimen/header_padding</item>
         <item name="android:textStyle">bold</item>

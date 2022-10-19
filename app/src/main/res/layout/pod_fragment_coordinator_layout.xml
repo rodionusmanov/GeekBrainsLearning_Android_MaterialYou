@@ -47,16 +47,37 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/pod_screen"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <com.example.materialyou.utils.EquilateralImageView
-            android:id="@+id/pod_image_view"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/pod_clickable_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="4dp"/>
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/click_here_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/text_header_style"
+                android:textColor="?attr/textViewTextColor"
+                android:text="@string/click_here_to_get_picture_of_the_day"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <com.example.materialyou.utils.EquilateralImageView
+                android:id="@+id/pod_image_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

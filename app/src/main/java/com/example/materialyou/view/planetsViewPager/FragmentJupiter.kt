@@ -7,13 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.materialyou.R
 
-class FragmentKuiperBelt : Fragment() {
-
+class FragmentJupiter() : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_kuiper_belt, container, false)
+    ): View {
+        return inflater.inflate(R.layout.fragment_jupiter, container, false)
     }
 }
