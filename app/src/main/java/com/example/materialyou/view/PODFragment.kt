@@ -2,7 +2,6 @@ package com.example.materialyou.view
 
 import android.os.Bundle
 import android.view.*
-import android.widget.FrameLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -69,6 +68,7 @@ class PODFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setBottomSheetBehavior(view.findViewById(R.id.bottom_sheet_container))
         binding.podImageView.setOnClickListener {
+            requireView().findViewById<TextView>(R.id.click_here_tv).visibility = View.INVISIBLE
             viewModel.getInfoFromServer()
             viewModel.getLiveData().observe(viewLifecycleOwner) {
                 renderData(it)
@@ -77,11 +77,10 @@ class PODFragment : Fragment() {
 
         binding.wikiSearch.setOnClickListener {
             val bsHeader: TextView =
-                requireActivity().findViewById<TextView>(R.id.bottom_sheet_description_header)
+                requireActivity().findViewById(R.id.bottom_sheet_description_header)
             wikiRequest = bsHeader.text.toString()
             val dialog = WikiSearchFragment()
             dialog.show(requireActivity().supportFragmentManager, "wiki request")
-            true
         }
     }
 
