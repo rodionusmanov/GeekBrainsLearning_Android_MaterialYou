@@ -67,10 +67,6 @@ class BottomNavigationViewActivity : AppCompatActivity() {
                     navigateTo(ThemeChangeFragment())
                     false
                 }
-                R.id.motion_scenes -> {
-                    navigateTo(AnimationFragment())
-                    false
-                }
                 else -> true
             }
             true
