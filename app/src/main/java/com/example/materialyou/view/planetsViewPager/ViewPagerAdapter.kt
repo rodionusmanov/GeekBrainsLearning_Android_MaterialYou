@@ -1,14 +1,26 @@
-package com.example.materialyou.view.navigation
+package com.example.materialyou.view.planetsViewPager
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.materialyou.view.layouts.MotionScenesFragment
 
 class ViewPagerAdapter(fragmentActivity: FragmentActivity) :
     FragmentStateAdapter(fragmentActivity) {
 
-    val fragments = arrayOf(FragmentEarth(), FragmentMars(), FragmentSolarSystem())
+    val fragments = arrayOf(
+        FragmentSun(),
+        FragmentMercury(),
+        FragmentVenus(),
+        FragmentEarth(),
+        FragmentMars(),
+        FragmentAsteroidBelt(),
+        FragmentJupiter(),
+        FragmentSaturn(),
+        FragmentUranus(),
+        FragmentNeptune(),
+        FragmentPluto(),
+        FragmentKuiperBelt()
+    )
 
     override fun getItemCount(): Int {
         return fragments.size

@@ -18,4 +18,7 @@
     <string name="amazon_green_dark_theme">Amazon green dark theme</string>
     <string name="picture_of_the_day_caps">PICTURE OF THE DAY</string>
     <string name="motion_scenes">Motion</string>
+    <string name="click_here_to_get_picture_of_the_day">Click here to get picture of the day</string>
+    <string name="wiki_search">Wiki search</string>
+    <string name="picture_info">Picture info</string>
 </resources>

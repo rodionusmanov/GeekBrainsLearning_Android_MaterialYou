@@ -1,4 +1,4 @@
-package com.example.materialyou.view.navigation
+package com.example.materialyou.view.planetsViewPager
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,13 +7,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.materialyou.R
 
-class FragmentMars : Fragment() {
+class FragmentAsteroidBelt() : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_mars, container, false)
+    ): View {
+        return inflater.inflate(R.layout.fragment_asteroid_belt, container, false)
     }
 }

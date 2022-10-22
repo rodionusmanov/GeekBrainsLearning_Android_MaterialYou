@@ -1,4 +1,4 @@
-package com.example.materialyou.view.navigation
+package com.example.materialyou.view.planetsViewPager
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,11 +11,34 @@ import com.example.materialyou.databinding.PlanetsFragmentBinding
 import com.google.android.material.tabs.TabLayoutMediator
 
 class PlanetsFragment : Fragment() {
-    private val tabTitles = arrayOf("Earth", "Mars", "Solar system")
+    private val tabTitles = arrayOf(
+        "Sun",
+        "Mercury",
+        "Venus",
+        "Earth",
+        "Mars",
+        "Asteroid belt",
+        "Jupiter",
+        "Saturn",
+        "Uranus",
+        "Neptune",
+        "Pluto",
+        "Kuiper belt"
+    )
     private val tabIcons = arrayOf(
+        R.drawable.sun_icon,
+        R.drawable.mercury_icon,
+        R.drawable.venus_icon,
         R.drawable.earth_icon,
         R.drawable.mars_icon,
-        R.drawable.solar_system_icon)
+        R.drawable.asteroid_belt_icon,
+        R.drawable.jupiter_icon,
+        R.drawable.saturn_icon,
+        R.drawable.uranus_icon,
+        R.drawable.neptune_icon,
+        R.drawable.pluto_icon,
+        R.drawable.asteroid_belt_icon
+    )
 
     private var _binding: PlanetsFragmentBinding? = null
     private val binding: PlanetsFragmentBinding
