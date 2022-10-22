@@ -1,27 +1,32 @@
 package com.example.materialyou.view
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.*
-import android.widget.TextView
 import android.widget.Toast
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.transition.Fade
+import androidx.transition.TransitionManager
 import coil.load
 import com.example.materialyou.R
 import com.example.materialyou.databinding.PodFragmentCoordinatorLayoutBinding
+import com.example.materialyou.utils.descriptionBody
+import com.example.materialyou.utils.descriptionHeader
 import com.example.materialyou.utils.wikiRequest
+import com.example.materialyou.view.layouts.PODDescriptionFragment
 import com.example.materialyou.view.layouts.WikiSearchFragment
 import com.example.materialyou.viewmodel.PODViewModel
 import com.example.materialyou.viewmodel.PODViewModelAppState
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 class PODFragment : Fragment() {
     companion object {
         fun newInstance() = PODFragment()
     }
 
-    private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
+    private var isFlag = false
     private var _binding: PodFragmentCoordinatorLayoutBinding? = null
     private val binding: PodFragmentCoordinatorLayoutBinding
         get() {
@@ -66,28 +71,75 @@ class PODFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setBottomSheetBehavior(view.findViewById(R.id.bottom_sheet_container))
-        binding.podImageView.setOnClickListener {
-            requireView().findViewById<TextView>(R.id.click_here_tv).visibility = View.INVISIBLE
+        binding.podScreen.setOnClickListener {
             viewModel.getInfoFromServer()
             viewModel.getLiveData().observe(viewLifecycleOwner) {
                 renderData(it)
             }
         }
 
-        binding.wikiSearch.setOnClickListener {
-            val bsHeader: TextView =
-                requireActivity().findViewById(R.id.bottom_sheet_description_header)
-            wikiRequest = bsHeader.text.toString()
-            val dialog = WikiSearchFragment()
-            dialog.show(requireActivity().supportFragmentManager, "wiki request")
+        binding.podFab.setOnClickListener {
+            isFlag = !isFlag
+            val fade = Fade()
+            TransitionManager.beginDelayedTransition(binding.root, fade)
+            if (isFlag) {
+                ObjectAnimator.ofFloat(binding.podFab, View.ROTATION, 0F, -135f).setDuration(1000L)
+                    .start()
+                ObjectAnimator.ofFloat(binding.wikiContainer, View.TRANSLATION_Y, 140f)
+                    .setDuration(500L).start()
+                ObjectAnimator.ofFloat(binding.descriptionContainer, View.TRANSLATION_Y, 120f)
+                    .setDuration(500L).start()
+                ObjectAnimator.ofFloat(binding.alphaBackground, View.ALPHA, 0.8F).setDuration(500L).start()
+                binding.wikiContainer.animate().alpha(1.0f).setDuration(500L).setListener(
+                    object : AnimatorListenerAdapter() {
+                        override fun onAnimationEnd(animation: Animator) {
+                            binding.wikiContainer.isClickable = true
+                        }
+                    }
+                )
+                binding.descriptionContainer.animate().alpha(1.0f).setDuration(500L).setListener(
+                    object : AnimatorListenerAdapter() {
+                        override fun onAnimationEnd(animation: Animator) {
+                            binding.descriptionContainer.isClickable = true
+                        }
+                    }
+                )
+                binding.wikiContainer.setOnClickListener{
+                    val dialog = WikiSearchFragment()
+                    dialog.show(requireActivity().supportFragmentManager, "wiki request")
+                }
+                binding.descriptionContainer.setOnClickListener{
+                    val dialog = PODDescriptionFragment()
+                    dialog.show(requireActivity().supportFragmentManager, "description request")
+                }
+            } else {
+                ObjectAnimator.ofFloat(binding.podFab, View.ROTATION, -135f, 0f)
+                    .setDuration(1000L).start()
+                ObjectAnimator.ofFloat(binding.wikiContainer, View.TRANSLATION_Y, 0f)
+                    .setDuration(500L).start()
+                ObjectAnimator.ofFloat(binding.descriptionContainer, View.TRANSLATION_Y, 0f)
+                    .setDuration(500L).start()
+                ObjectAnimator.ofFloat(binding.alphaBackground, View.ALPHA, 0.0F).setDuration(500L).start()
+                binding.wikiContainer.animate().alpha(0.0f).setDuration(500L).setListener(
+                    object : AnimatorListenerAdapter() {
+                        override fun onAnimationEnd(animation: Animator) {
+                            binding.wikiContainer.isClickable = false
+                        }
+                    }
+                )
+                binding.descriptionContainer.animate().alpha(0.0f).setDuration(500L).setListener(
+                    object : AnimatorListenerAdapter() {
+                        override fun onAnimationEnd(animation: Animator) {
+                            binding.descriptionContainer.isClickable = false
+                        }
+                    }
+                )
+            }
         }
     }
 
     private fun renderData(podViewModelAppState: PODViewModelAppState?) {
-        val bsHeader =
-            requireActivity().findViewById<TextView>(R.id.bottom_sheet_description_header)
-        val bsDescription = requireActivity().findViewById<TextView>(R.id.bottom_sheet_description)
+        binding.podImageView.visibility = View.VISIBLE
         when (podViewModelAppState) {
             is PODViewModelAppState.Error -> {
                 binding.podImageView.setImageResource(android.R.drawable.ic_delete)
@@ -104,17 +156,13 @@ class PODFragment : Fragment() {
                         placeholder(android.R.drawable.ic_menu_rotate)
                         crossfade(true)
                     }
-                    bottomSheetBehavior.setPeekHeight(requireActivity().findViewById<TextView>(R.id.bottom_sheet_description_header).height + 120)
                 }
-                bsHeader.text = podViewModelAppState.podDataTransferObject.title
-                bsDescription.text = podViewModelAppState.podDataTransferObject.explanation
+                binding.clickHereTv.text = podViewModelAppState.podDataTransferObject.title
+                wikiRequest = podViewModelAppState.podDataTransferObject.title
+                descriptionHeader = podViewModelAppState.podDataTransferObject.title
+                descriptionBody = podViewModelAppState.podDataTransferObject.explanation
             }
             null -> {}
         }
-    }
-
-    private fun setBottomSheetBehavior(bottomSheet: ConstraintLayout) {
-        bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
-        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
     }
 }
