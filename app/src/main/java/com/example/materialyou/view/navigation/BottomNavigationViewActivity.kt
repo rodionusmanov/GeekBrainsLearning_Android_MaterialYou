@@ -8,10 +8,8 @@ import com.example.materialyou.R
 import com.example.materialyou.databinding.BottomNavigationViewActivityBinding
 import com.example.materialyou.utils.bottomNavigationViewState
 import com.example.materialyou.utils.themeState
-import com.example.materialyou.view.PODFragment
-import com.example.materialyou.view.ThemeChangeFragment
-import com.example.materialyou.view.layouts.AnimationFragment
-import com.example.materialyou.view.layouts.MotionScenesFragment
+import com.example.materialyou.view.pictureOfTheDay.PODFragment
+import com.example.materialyou.view.themeChange.ThemeChangeFragment
 import com.example.materialyou.view.planetsViewPager.PlanetsFragment
 
 class BottomNavigationViewActivity : AppCompatActivity() {

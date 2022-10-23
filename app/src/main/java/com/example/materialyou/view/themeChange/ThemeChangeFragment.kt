@@ -1,4 +1,4 @@
-package com.example.materialyou.view
+package com.example.materialyou.view.themeChange
 
 import android.os.Bundle
 import android.view.LayoutInflater

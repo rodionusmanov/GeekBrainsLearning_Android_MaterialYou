@@ -1,4 +1,4 @@
-package com.example.materialyou.view
+package com.example.materialyou.view.pictureOfTheDay
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
@@ -16,6 +16,7 @@ import com.example.materialyou.databinding.PodFragmentCoordinatorLayoutBinding
 import com.example.materialyou.utils.descriptionBody
 import com.example.materialyou.utils.descriptionHeader
 import com.example.materialyou.utils.wikiRequest
+import com.example.materialyou.view.themeChange.ThemeChangeFragment
 import com.example.materialyou.view.layouts.PODDescriptionFragment
 import com.example.materialyou.view.layouts.WikiSearchFragment
 import com.example.materialyou.viewmodel.PODViewModel
