@@ -8,6 +8,7 @@ import com.example.materialyou.R
 import com.example.materialyou.databinding.BottomNavigationViewActivityBinding
 import com.example.materialyou.utils.bottomNavigationViewState
 import com.example.materialyou.utils.themeState
+import com.example.materialyou.view.notesRecyclerView.NotesFragment
 import com.example.materialyou.view.pictureOfTheDay.PODFragment
 import com.example.materialyou.view.themeChange.ThemeChangeFragment
 import com.example.materialyou.view.planetsViewPager.PlanetsFragment
@@ -63,7 +64,11 @@ class BottomNavigationViewActivity : AppCompatActivity() {
                 }
                 R.id.bottom_change_theme -> {
                     navigateTo(ThemeChangeFragment())
-                    false
+                    true
+                }
+                R.id.bottom_notes -> {
+                    navigateTo(NotesFragment())
+                    true
                 }
                 else -> true
             }
