@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.materialyou.R
 import com.example.materialyou.databinding.NotesFragmentBinding
 
 class NotesFragment : Fragment() {
@@ -13,15 +14,16 @@ class NotesFragment : Fragment() {
     }
 
     var data = arrayListOf(
-        Data(TYPE_STANDART, "notvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvve1", "1"),
-        Data(TYPE_STANDART, "note2", "null"),
-        Data(TYPE_HEADER_PICTURE, "note4", "nulggggggggggggggggggggggggggggggggggggggggggggggges"),
+        Data(TYPE_STANDART, "NOTE 1", "description 1", R.drawable.sun, false),
+        Data(TYPE_STANDART, "NOTE 2", "description 2", R.drawable.mercury, false),
         Data(
-            TYPE_STANDART,
-            "note3",
-            "45ggggggggggggggggggggggggggggggggggggggggggggggggggggggggg67"
+            TYPE_HEADER_PICTURE, "NOTE 3", "description 3", R.drawable.earth, false
+        ),
+        Data(
+            TYPE_STANDART, "NOTE 4", "description 4", R.drawable.mars, false
         )
     )
+
     private lateinit var notesAdapter: NotesAdapter
     private var _binding: NotesFragmentBinding? = null
     private val binding: NotesFragmentBinding
@@ -34,7 +36,7 @@ class NotesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = NotesFragmentBinding.inflate(inflater, container, false)
-        notesAdapter = NotesAdapter(data, callbackDeleteItem)
+        notesAdapter = NotesAdapter(data, callbackDeleteItem, callbackTypeChange, callbackEditItem)
         binding.notesFragmentRecyclerView.adapter = notesAdapter
         return binding.notesContainer
     }
@@ -46,6 +48,18 @@ class NotesFragment : Fragment() {
         }
     }
 
+    private val callbackTypeChange = object : NoteTypeChange {
+        override fun changeType(position: Int) {
+            notesAdapter.setListDataChangeType(data, position)
+        }
+    }
+
+    private val callbackEditItem = object : EditItem {
+        override fun edit(position: Int) {
+            notesAdapter.setListDataEdit(data, position)
+        }
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
@@ -54,7 +68,16 @@ class NotesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.addNoteFab.setOnClickListener {
-            data.add(data.size,Data(TYPE_STANDART, "New Note Header", "New note description"))
+            data.add(
+                data.size,
+                Data(
+                    TYPE_STANDART,
+                    "New Note Header",
+                    "New note description",
+                    R.drawable.notes_icon,
+                    false
+                )
+            )
             notesAdapter.setListDataAdd(data)
         }
     }

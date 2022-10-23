@@ -22,4 +22,5 @@
     <string name="wiki_search">Wiki search</string>
     <string name="picture_info">Picture info</string>
     <string name="notes">Notes</string>
+    <string name="header">Header</string>
 </resources>

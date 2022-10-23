@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
@@ -33,44 +32,91 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/standart_note_header"
-                    style="@style/text_header_style"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"/>
-
-                <FrameLayout
+                <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_weight="1">
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="4dp"
+                    app:cardMaxElevation="6dp"
+                    app:contentPadding="3dp">
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/change_note_type_iv"
+                        android:id="@+id/edit_note_iv"
+                        android:layout_width="33dp"
+                        android:layout_height="33dp"
                         android:layout_gravity="start|center"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_margin="5dp"
                         android:backgroundTint="?attr/darkColor"
-                        android:src="@drawable/change_type_icon"/>
+                        android:src="@drawable/edit_note_icon" />
 
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/delete_iv"
-                        android:layout_gravity="end|center"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:backgroundTint="?attr/darkColor"
-                        android:src="@drawable/delete_icon"/>
-                </FrameLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="4dp"
+                    android:layout_weight="5"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="4dp"
+                    app:cardMaxElevation="6dp"
+                    app:contentPadding="3dp">
+
+
+                    <EditText
+                        android:id="@+id/standart_note_header"
+                        style="@style/text_header_style"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:enabled="false"/>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="4dp"
+                    android:layout_weight="2"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="4dp"
+                    app:cardMaxElevation="6dp"
+                    app:contentPadding="3dp">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/change_note_type_iv"
+                            android:layout_width="33dp"
+                            android:layout_height="33dp"
+                            android:layout_gravity="start|center"
+                            android:layout_margin="5dp"
+                            android:backgroundTint="?attr/darkColor"
+                            android:src="@drawable/change_type_icon" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/delete_iv"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_gravity="end|center"
+                            android:layout_margin="5dp"
+                            android:backgroundTint="?attr/darkColor"
+                            android:src="@drawable/delete_icon" />
+                    </FrameLayout>
+                </androidx.cardview.widget.CardView>
             </LinearLayout>
 
-            <TextView
+            <EditText
                 android:id="@+id/standart_note_body"
                 style="@style/text_body_style"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:enabled="false"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

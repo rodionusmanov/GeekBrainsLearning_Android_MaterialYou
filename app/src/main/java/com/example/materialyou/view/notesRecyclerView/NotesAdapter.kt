@@ -4,21 +4,35 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.materialyou.R
 import com.example.materialyou.databinding.PictureHeaderNoteItemBinding
 import com.example.materialyou.databinding.StandartNoteItemBinding
 
-class NotesAdapter(var listData: List<Data>, val callbackDelete: DeleteItem) :
+class NotesAdapter(
+    private var listData: List<Data>,
+    val callbackDelete: DeleteItem,
+    val callbackItemTypeChange: NoteTypeChange,
+    val callbackEditItem: EditItem
+) :
     RecyclerView.Adapter<NotesAdapter.ElasticViewHolder>() {
 
-    fun setListDataAdd(newListData: List<Data>){
+    fun setListDataAdd(newListData: List<Data>) {
         listData = newListData
-        notifyDataSetChanged()
+        notifyItemInserted(listData.size)
     }
 
-    fun setListDataDelete(newListData: List<Data>, position: Int){
+    fun setListDataDelete(newListData: List<Data>, position: Int) {
         listData = newListData
-        notifyDataSetChanged()
+        notifyItemRemoved(position)
+    }
+
+    fun setListDataChangeType(newListData: List<Data>, position: Int) {
+        listData = newListData
+        notifyItemChanged(position)
+    }
+
+    fun setListDataEdit(newListData: List<Data>, position: Int) {
+        listData = newListData
+        notifyItemChanged(position)
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -33,7 +47,10 @@ class NotesAdapter(var listData: List<Data>, val callbackDelete: DeleteItem) :
                     parent,
                     false
                 )
-                StandartNoteViewHolder(binding)
+                binding.standartNoteHeader.isEnabled = false
+                binding.standartNoteBody.isEnabled = false
+                StandardNoteViewHolder(binding)
+
             }
             TYPE_HEADER_PICTURE -> {
                 val binding =
@@ -42,6 +59,7 @@ class NotesAdapter(var listData: List<Data>, val callbackDelete: DeleteItem) :
                         parent,
                         false
                     )
+                binding.pictureHeaderNoteHeader.isEnabled = false
                 PictureHeaderNoteViewHolder(binding)
             }
             else -> {
@@ -50,7 +68,9 @@ class NotesAdapter(var listData: List<Data>, val callbackDelete: DeleteItem) :
                     parent,
                     false
                 )
-                StandartNoteViewHolder(binding)
+                binding.standartNoteHeader.isEnabled = false
+                binding.standartNoteBody.isEnabled = false
+                StandardNoteViewHolder(binding)
             }
         }
     }
@@ -63,27 +83,63 @@ class NotesAdapter(var listData: List<Data>, val callbackDelete: DeleteItem) :
         return listData.size
     }
 
-    inner class StandartNoteViewHolder(val binding: StandartNoteItemBinding) :
+    inner class StandardNoteViewHolder(val binding: StandartNoteItemBinding) :
         ElasticViewHolder(binding.root) {
         override fun bind(data: Data) {
             binding.apply {
-                standartNoteHeader.text = data.headerText
-                standartNoteBody.text = data.descriptionText
-            }
-            binding.deleteIv.setOnClickListener {
-                callbackDelete.delete(layoutPosition)
+                standartNoteHeader.setText(data.headerText)
+                standartNoteBody.setText(data.descriptionText)
+
+                editNoteIv.setOnClickListener {
+                    data.editNote = !data.editNote
+                    if (data.editNote == true) {
+                        standartNoteHeader.isEnabled = true
+                        standartNoteBody.isEnabled = true
+                    } else {
+                        standartNoteHeader.isEnabled = false
+                        standartNoteBody.isEnabled = false
+                    }
+                    callbackEditItem.edit(layoutPosition)
+                }
+
+                deleteIv.setOnClickListener {
+                    callbackDelete.delete(layoutPosition)
+                }
+
+                changeNoteTypeIv.setOnClickListener {
+                    data.type = (data.type + 1) % NUMBER_OF_TYPES
+                    callbackItemTypeChange.changeType(layoutPosition)
+                }
             }
         }
     }
 
-    class PictureHeaderNoteViewHolder(val binding: PictureHeaderNoteItemBinding) :
+    inner class PictureHeaderNoteViewHolder(val binding: PictureHeaderNoteItemBinding) :
         ElasticViewHolder(binding.root) {
         override fun bind(data: Data) {
             binding.apply {
-                pictureHeaderNoteHeader.text = data.headerText
-                pictureHeaderNotePicture.setImageResource(R.drawable.saturn)
+                pictureHeaderNoteHeader.setText(data.headerText)
+                pictureHeaderNotePicture.setImageResource(data.drawableRes)
+                editNoteIv.setOnClickListener {
+                    data.editNote = !data.editNote
+                    if (data.editNote == true) {
+                        pictureHeaderNoteHeader.isEnabled = true
+                        data.headerText = pictureHeaderNoteHeader.text.toString()
+                    } else {
+                        pictureHeaderNotePicture.isEnabled = false
+                    }
+                    callbackEditItem.edit(layoutPosition)
+                }
+
+                deleteIv.setOnClickListener {
+                    callbackDelete.delete(layoutPosition)
+                }
+
+                changeNoteTypeIv.setOnClickListener {
+                    data.type = (data.type + 1) % NUMBER_OF_TYPES
+                    callbackItemTypeChange.changeType(layoutPosition)
+                }
             }
-//            binding.add
         }
     }
 
