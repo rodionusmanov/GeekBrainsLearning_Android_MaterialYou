@@ -5,8 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.materialyou.R
 import com.example.materialyou.databinding.NotesFragmentBinding
 
 class NotesFragment : Fragment() {
@@ -14,8 +12,8 @@ class NotesFragment : Fragment() {
         fun newInstance() = NotesFragment()
     }
 
-    val data = arrayListOf(
-        Data(TYPE_STANDART, "note1", "1"),
+    var data = arrayListOf(
+        Data(TYPE_STANDART, "notvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvve1", "1"),
         Data(TYPE_STANDART, "note2", "null"),
         Data(TYPE_HEADER_PICTURE, "note4", "nulggggggggggggggggggggggggggggggggggggggggggggggges"),
         Data(
@@ -24,6 +22,7 @@ class NotesFragment : Fragment() {
             "45ggggggggggggggggggggggggggggggggggggggggggggggggggggggggg67"
         )
     )
+    private lateinit var notesAdapter: NotesAdapter
     private var _binding: NotesFragmentBinding? = null
     private val binding: NotesFragmentBinding
         get() {
@@ -35,12 +34,28 @@ class NotesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = NotesFragmentBinding.inflate(inflater, container, false)
-        binding.notesFragmentRecyclerView.adapter = NotesAdapter(data)
+        notesAdapter = NotesAdapter(data, callbackDeleteItem)
+        binding.notesFragmentRecyclerView.adapter = notesAdapter
         return binding.notesContainer
+    }
+
+    private val callbackDeleteItem = object : DeleteItem {
+        override fun delete(position: Int) {
+            data.removeAt(position)
+            notesAdapter.setListDataDelete(data, position)
+        }
     }
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.addNoteFab.setOnClickListener {
+            data.add(data.size,Data(TYPE_STANDART, "New Note Header", "New note description"))
+            notesAdapter.setListDataAdd(data)
+        }
     }
 }
