@@ -1,10 +1,13 @@
 package com.example.materialyou.view.notesRecyclerView
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.ItemTouchHelper
 import com.example.materialyou.R
 import com.example.materialyou.databinding.NotesFragmentBinding
 
@@ -38,23 +41,24 @@ class NotesFragment : Fragment() {
         _binding = NotesFragmentBinding.inflate(inflater, container, false)
         notesAdapter = NotesAdapter(data, callbackDeleteItem, callbackTypeChange, callbackEditItem)
         binding.notesFragmentRecyclerView.adapter = notesAdapter
+        ItemTouchHelper(ItemTouchHelperCallback(notesAdapter)).attachToRecyclerView(binding.notesFragmentRecyclerView)
         return binding.notesContainer
     }
 
-    private val callbackDeleteItem = object : DeleteItem {
+    private val callbackDeleteItem = object : IDeleteItem {
         override fun delete(position: Int) {
             data.removeAt(position)
             notesAdapter.setListDataDelete(data, position)
         }
     }
 
-    private val callbackTypeChange = object : NoteTypeChange {
+    private val callbackTypeChange = object : INoteTypeChange {
         override fun changeType(position: Int) {
             notesAdapter.setListDataChangeType(data, position)
         }
     }
 
-    private val callbackEditItem = object : EditItem {
+    private val callbackEditItem = object : IEditItem {
         override fun edit(position: Int) {
             notesAdapter.setListDataEdit(data, position)
         }

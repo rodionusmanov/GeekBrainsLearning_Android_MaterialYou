@@ -8,29 +8,29 @@ import com.example.materialyou.databinding.PictureHeaderNoteItemBinding
 import com.example.materialyou.databinding.StandartNoteItemBinding
 
 class NotesAdapter(
-    private var listData: List<Data>,
-    val callbackDelete: DeleteItem,
-    val callbackItemTypeChange: NoteTypeChange,
-    val callbackEditItem: EditItem
+    private var listData: MutableList<Data>,
+    val callbackDelete: IDeleteItem,
+    val callbackItemTypeChange: INoteTypeChange,
+    val callbackEditItem: IEditItem
 ) :
-    RecyclerView.Adapter<NotesAdapter.ElasticViewHolder>() {
+    RecyclerView.Adapter<NotesAdapter.ElasticViewHolder>(), ItemTouchHelperAdapter{
 
-    fun setListDataAdd(newListData: List<Data>) {
+    fun setListDataAdd(newListData: MutableList<Data>) {
         listData = newListData
         notifyItemInserted(listData.size)
     }
 
-    fun setListDataDelete(newListData: List<Data>, position: Int) {
+    fun setListDataDelete(newListData: MutableList<Data>, position: Int) {
         listData = newListData
         notifyItemRemoved(position)
     }
 
-    fun setListDataChangeType(newListData: List<Data>, position: Int) {
+    fun setListDataChangeType(newListData: MutableList<Data>, position: Int) {
         listData = newListData
         notifyItemChanged(position)
     }
 
-    fun setListDataEdit(newListData: List<Data>, position: Int) {
+    fun setListDataEdit(newListData: MutableList<Data>, position: Int) {
         listData = newListData
         notifyItemChanged(position)
     }
@@ -92,9 +92,11 @@ class NotesAdapter(
 
                 editNoteIv.setOnClickListener {
                     data.editNote = !data.editNote
-                    if (data.editNote == true) {
+                    if (data.editNote) {
                         standartNoteHeader.isEnabled = true
                         standartNoteBody.isEnabled = true
+                        data.headerText = standartNoteHeader.text.toString()
+                        data.descriptionText = standartNoteBody.text.toString()
                     } else {
                         standartNoteHeader.isEnabled = false
                         standartNoteBody.isEnabled = false
@@ -122,7 +124,7 @@ class NotesAdapter(
                 pictureHeaderNotePicture.setImageResource(data.drawableRes)
                 editNoteIv.setOnClickListener {
                     data.editNote = !data.editNote
-                    if (data.editNote == true) {
+                    if (data.editNote) {
                         pictureHeaderNoteHeader.isEnabled = true
                         data.headerText = pictureHeaderNoteHeader.text.toString()
                     } else {
@@ -145,5 +147,17 @@ class NotesAdapter(
 
     abstract class ElasticViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         abstract fun bind(data: Data)
+    }
+
+    override fun onItemMove(fromPosition: Int, toPosition: Int) {
+        listData.removeAt(fromPosition).apply {
+            listData.add(toPosition, this)
+        }
+        notifyItemMoved(fromPosition, toPosition)
+    }
+
+    override fun onItemDelete(position: Int) {
+        listData.removeAt(position)
+        notifyItemRemoved(position)
     }
 }

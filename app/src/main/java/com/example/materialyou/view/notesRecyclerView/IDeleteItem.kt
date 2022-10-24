@@ -1,5 +1,5 @@
 package com.example.materialyou.view.notesRecyclerView
 
-interface AddItem {
-    fun add(position: Int)
+interface IDeleteItem {
+    fun delete(position: Int)
 }

@@ -10,8 +10,8 @@ import com.example.materialyou.utils.bottomNavigationViewState
 import com.example.materialyou.utils.themeState
 import com.example.materialyou.view.notesRecyclerView.NotesFragment
 import com.example.materialyou.view.pictureOfTheDay.PODFragment
-import com.example.materialyou.view.themeChange.ThemeChangeFragment
 import com.example.materialyou.view.planetsViewPager.PlanetsFragment
+import com.example.materialyou.view.themeChange.ThemeChangeFragment
 
 class BottomNavigationViewActivity : AppCompatActivity() {
     private lateinit var binding: BottomNavigationViewActivityBinding

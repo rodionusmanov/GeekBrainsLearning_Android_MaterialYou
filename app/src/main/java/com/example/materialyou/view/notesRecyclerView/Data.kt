@@ -11,6 +11,6 @@ data class Data(
     var headerText: String = "Header",
     var descriptionText: String = "Description",
     var drawableRes: Int = R.drawable.notes_icon,
-    var editNote: Boolean = false
+    var editNote: Boolean = true
 ) {
 }
