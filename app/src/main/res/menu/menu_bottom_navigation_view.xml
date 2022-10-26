@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-
     <item
         android:id="@+id/bottom_planets"
         android:icon="@drawable/solar_system_icon"
-        android:title="@string/planets"/>
+        android:title="@string/solar_system"/>
 
     <item
         android:id="@+id/bottom_POD"
-        android:icon="@android:drawable/ic_menu_gallery"
+        android:icon="@drawable/picture_of_the_day_icon"
         android:title="@string/picture_of_the_day"/>
 
     <item
         android:id="@+id/bottom_change_theme"
-        android:icon="@android:drawable/ic_menu_edit"
+        android:icon="@drawable/change_theme_icon"
         android:title="@string/choose_theme"/>
+
+    <item
+        android:id="@+id/bottom_notes"
+        android:icon="@drawable/notes_icon"
+        android:title="@string/notes"/>
 </menu>
