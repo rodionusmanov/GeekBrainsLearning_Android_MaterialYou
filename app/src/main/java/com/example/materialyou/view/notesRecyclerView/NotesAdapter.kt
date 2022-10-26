@@ -1,9 +1,12 @@
 package com.example.materialyou.view.notesRecyclerView
 
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.example.materialyou.R
 import com.example.materialyou.databinding.PictureHeaderNoteItemBinding
 import com.example.materialyou.databinding.StandartNoteItemBinding
 
@@ -13,7 +16,7 @@ class NotesAdapter(
     val callbackItemTypeChange: INoteTypeChange,
     val callbackEditItem: IEditItem
 ) :
-    RecyclerView.Adapter<NotesAdapter.ElasticViewHolder>(), ItemTouchHelperAdapter{
+    RecyclerView.Adapter<NotesAdapter.ElasticViewHolder>(), ItemTouchHelperAdapter {
 
     fun setListDataAdd(newListData: MutableList<Data>) {
         listData = newListData
@@ -114,6 +117,22 @@ class NotesAdapter(
                 }
             }
         }
+
+        override fun onItemSelect() {
+            val typedValue = TypedValue()
+            itemView.context.theme.resolveAttribute(R.attr.darkColor, typedValue, true)
+            val color = typedValue.resourceId
+            binding.cardView.backgroundTintList =
+                ContextCompat.getColorStateList(itemView.context, color)
+        }
+
+        override fun onItemClear() {
+            val typedValue = TypedValue()
+            itemView.context.theme.resolveAttribute(R.attr.lightColor, typedValue, true)
+            val color = typedValue.resourceId
+            binding.cardView.backgroundTintList =
+                ContextCompat.getColorStateList(itemView.context, color)
+        }
     }
 
     inner class PictureHeaderNoteViewHolder(val binding: PictureHeaderNoteItemBinding) :
@@ -143,9 +162,26 @@ class NotesAdapter(
                 }
             }
         }
+
+        override fun onItemSelect() {
+            val typedValue = TypedValue()
+            itemView.context.theme.resolveAttribute(R.attr.darkColor, typedValue, true)
+            val color = typedValue.resourceId
+            binding.cardView.backgroundTintList =
+                ContextCompat.getColorStateList(itemView.context, color)
+        }
+
+        override fun onItemClear() {
+            val typedValue = TypedValue()
+            itemView.context.theme.resolveAttribute(R.attr.lightColor, typedValue, true)
+            val color = typedValue.resourceId
+            binding.cardView.backgroundTintList =
+                ContextCompat.getColorStateList(itemView.context, color)
+        }
     }
 
-    abstract class ElasticViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    abstract class ElasticViewHolder(view: View) : RecyclerView.ViewHolder(view),
+        ItemTouchHelperViewHolder {
         abstract fun bind(data: Data)
     }
 
