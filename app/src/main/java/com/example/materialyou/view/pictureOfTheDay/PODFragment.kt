@@ -23,9 +23,6 @@ import com.example.materialyou.viewmodel.PODViewModel
 import com.example.materialyou.viewmodel.PODViewModelAppState
 
 class PODFragment : Fragment() {
-    companion object {
-        fun newInstance() = PODFragment()
-    }
 
     private var isFlag = false
     private var _binding: PodFragmentCoordinatorLayoutBinding? = null
@@ -84,57 +81,9 @@ class PODFragment : Fragment() {
             val fade = Fade()
             TransitionManager.beginDelayedTransition(binding.root, fade)
             if (isFlag) {
-                ObjectAnimator.ofFloat(binding.podFab, View.ROTATION, 0F, -135f).setDuration(1000L)
-                    .start()
-                ObjectAnimator.ofFloat(binding.wikiContainer, View.TRANSLATION_Y, 140f)
-                    .setDuration(500L).start()
-                ObjectAnimator.ofFloat(binding.descriptionContainer, View.TRANSLATION_Y, 120f)
-                    .setDuration(500L).start()
-                ObjectAnimator.ofFloat(binding.alphaBackground, View.ALPHA, 0.8F).setDuration(500L).start()
-                binding.wikiContainer.animate().alpha(1.0f).setDuration(500L).setListener(
-                    object : AnimatorListenerAdapter() {
-                        override fun onAnimationEnd(animation: Animator) {
-                            binding.wikiContainer.isClickable = true
-                        }
-                    }
-                )
-                binding.descriptionContainer.animate().alpha(1.0f).setDuration(500L).setListener(
-                    object : AnimatorListenerAdapter() {
-                        override fun onAnimationEnd(animation: Animator) {
-                            binding.descriptionContainer.isClickable = true
-                        }
-                    }
-                )
-                binding.wikiContainer.setOnClickListener{
-                    val dialog = WikiSearchFragment()
-                    dialog.show(requireActivity().supportFragmentManager, "wiki request")
-                }
-                binding.descriptionContainer.setOnClickListener{
-                    val dialog = PODDescriptionFragment()
-                    dialog.show(requireActivity().supportFragmentManager, "description request")
-                }
+                trueFlag()
             } else {
-                ObjectAnimator.ofFloat(binding.podFab, View.ROTATION, -135f, 0f)
-                    .setDuration(1000L).start()
-                ObjectAnimator.ofFloat(binding.wikiContainer, View.TRANSLATION_Y, 0f)
-                    .setDuration(500L).start()
-                ObjectAnimator.ofFloat(binding.descriptionContainer, View.TRANSLATION_Y, 0f)
-                    .setDuration(500L).start()
-                ObjectAnimator.ofFloat(binding.alphaBackground, View.ALPHA, 0.0F).setDuration(500L).start()
-                binding.wikiContainer.animate().alpha(0.0f).setDuration(500L).setListener(
-                    object : AnimatorListenerAdapter() {
-                        override fun onAnimationEnd(animation: Animator) {
-                            binding.wikiContainer.isClickable = false
-                        }
-                    }
-                )
-                binding.descriptionContainer.animate().alpha(0.0f).setDuration(500L).setListener(
-                    object : AnimatorListenerAdapter() {
-                        override fun onAnimationEnd(animation: Animator) {
-                            binding.descriptionContainer.isClickable = false
-                        }
-                    }
-                )
+                falseFlag()
             }
         }
     }
@@ -165,5 +114,79 @@ class PODFragment : Fragment() {
             }
             null -> {}
         }
+    }
+
+    private fun trueFlag() {
+        trueAnimation()
+        trueFlagOnClickListeners()
+    }
+
+    private fun falseFlag() {
+        falseAnimation()
+        falseFlagOnClickListeners()
+    }
+
+    private fun trueAnimation() {
+        ObjectAnimator.ofFloat(binding.podFab, View.ROTATION, 0F, -135f).setDuration(1000L)
+            .start()
+        ObjectAnimator.ofFloat(binding.wikiContainer, View.TRANSLATION_Y, 140f)
+            .setDuration(500L).start()
+        ObjectAnimator.ofFloat(binding.descriptionContainer, View.TRANSLATION_Y, 120f)
+            .setDuration(500L).start()
+        ObjectAnimator.ofFloat(binding.alphaBackground, View.ALPHA, 0.8F).setDuration(500L).start()
+    }
+
+    private fun falseAnimation() {
+        ObjectAnimator.ofFloat(binding.podFab, View.ROTATION, -135f, 0f)
+            .setDuration(1000L).start()
+        ObjectAnimator.ofFloat(binding.wikiContainer, View.TRANSLATION_Y, 0f)
+            .setDuration(500L).start()
+        ObjectAnimator.ofFloat(binding.descriptionContainer, View.TRANSLATION_Y, 0f)
+            .setDuration(500L).start()
+        ObjectAnimator.ofFloat(binding.alphaBackground, View.ALPHA, 0.0F).setDuration(500L)
+            .start()
+    }
+
+    private fun trueFlagOnClickListeners() {
+        binding.wikiContainer.animate().alpha(1.0f).setDuration(500L).setListener(
+            object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator) {
+                    binding.wikiContainer.isClickable = true
+                }
+            }
+        )
+        binding.descriptionContainer.animate().alpha(1.0f).setDuration(500L).setListener(
+            object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator) {
+                    binding.descriptionContainer.isClickable = true
+                }
+            }
+        )
+        binding.wikiContainer.setOnClickListener {
+            val dialog = WikiSearchFragment()
+            dialog.show(requireActivity().supportFragmentManager, "wiki request")
+        }
+        binding.descriptionContainer.setOnClickListener {
+            val dialog = PODDescriptionFragment()
+            dialog.show(requireActivity().supportFragmentManager, "description request")
+        }
+    }
+
+    private fun falseFlagOnClickListeners() {
+        binding.wikiContainer.animate().alpha(0.0f).setDuration(500L).setListener(
+            object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator) {
+                    binding.wikiContainer.isClickable = false
+                }
+            }
+        )
+
+        binding.descriptionContainer.animate().alpha(0.0f).setDuration(500L).setListener(
+            object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator) {
+                    binding.descriptionContainer.isClickable = false
+                }
+            }
+        )
     }
 }

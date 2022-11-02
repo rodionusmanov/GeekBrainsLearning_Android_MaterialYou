@@ -16,4 +16,41 @@
 
     <color name="amazon_green">#FF3B7A57</color>
     <color name="amazon_green_light">#FFB6CDC0</color>
+
+    <color name="rainbowA">#FFCC0000</color>
+    <color name="rainbowB">#FFCC2200</color>
+    <color name="rainbowC">#FFCC4400</color>
+    <color name="rainbowD">#FFCC6600</color>
+    <color name="rainbowE">#FFCC8800</color>
+    <color name="rainbowF">#FFCCAA00</color>
+    <color name="rainbowG">#FFCCCC00</color>
+    <color name="rainbowH">#FFAACC00</color>
+    <color name="rainbowI">#FF88CC00</color>
+    <color name="rainbowJ">#FF66CC00</color>
+    <color name="rainbowK">#FF44CC00</color>
+    <color name="rainbowL">#FF22CC00</color>
+    <color name="rainbowM">#FF00CC00</color>
+    <color name="rainbowN">#FF00CC22</color>
+    <color name="rainbowO">#FF00CC44</color>
+    <color name="rainbowP">#FF00CC66</color>
+    <color name="rainbowQ">#FF00CC88</color>
+    <color name="rainbowR">#FF00CCAA</color>
+    <color name="rainbowS">#FF00CCCC</color>
+    <color name="rainbowT">#FF00AACC</color>
+    <color name="rainbowU">#FF0088CC</color>
+    <color name="rainbowV">#FF0066CC</color>
+    <color name="rainbowW">#FF0044CC</color>
+    <color name="rainbowX">#FF0022CC</color>
+    <color name="rainbowY">#FF0000CC</color>
+    <color name="rainbowZ">#FF2200CC</color>
+    <color name="rainbowAa">#FF4400CC</color>
+    <color name="rainbowAb">#FF6600CC</color>
+    <color name="rainbowAc">#FF8800CC</color>
+    <color name="rainbowAd">#FFAA00CC</color>
+    <color name="rainbowAe">#FFCC00CC</color>
+    <color name="rainbowAf">#FFCC00AA</color>
+    <color name="rainbowAg">#FFCC0088</color>
+    <color name="rainbowAh">#FFCC0066</color>
+    <color name="rainbowAi">#FFCC0044</color>
+    <color name="rainbowAj">#FFCC0022</color>
 </resources>
