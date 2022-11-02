@@ -1,11 +1,10 @@
 package com.example.materialyou.view.layouts
 
-import android.annotation.SuppressLint
-import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
+import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
 import android.text.style.ImageSpan
 import android.view.LayoutInflater
@@ -39,31 +38,28 @@ class PODDescriptionFragment : DialogFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val spannableStringBody: SpannableString
-        val spannableStringHeader: SpannableString
-        spannableStringBody = SpannableString(descriptionBody)
         val bitmapEarth =
             ContextCompat.getDrawable(requireContext(), R.drawable.earth_svg)!!.toBitmap()
-        val descriptionHeaderText = descriptionHeader
-        val descriptionBodyText = descriptionBody
-        for (i in descriptionBodyText.indices) {
-            if (descriptionBodyText[i].equals('O')) {
-                spannableStringBody.setSpan(
-                    ImageSpan(bitmapEarth),
-                    i,
-                    i + 1,
-                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-                )
-            }
+        val spannableStringBody: SpannableString
+        val spannableStringBuilderHeader: SpannableStringBuilder
+
+        spannableStringBody = SpannableString(descriptionBody)
+        spannableStringBuilderHeader = SpannableStringBuilder(descriptionHeader)
+
+        spannableStringBuilderHeader.insert(0,"_")
+        spannableStringBuilderHeader.setSpan(ImageSpan(bitmapEarth), 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+        for (i in descriptionBody.indices) {
             spannableStringBody.setSpan(
                 ForegroundColorSpan(
-                    ContextCompat.getColor(requireContext(),rainbowIdColor[i%36])
+                    ContextCompat.getColor(requireContext(), rainbowIdColor[i % 36])
                 ), i, i + 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
             )
         }
+
         binding.apply {
             podDescriptionHeader.apply {
-                text = descriptionHeader
+                text = spannableStringBuilderHeader
                 typeface =
                     Typeface.createFromAsset(
                         requireActivity().assets,
