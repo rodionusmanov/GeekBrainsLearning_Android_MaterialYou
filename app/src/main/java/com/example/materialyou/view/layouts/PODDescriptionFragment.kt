@@ -1,5 +1,6 @@
 package com.example.materialyou.view.layouts
 
+import android.graphics.Typeface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -26,14 +27,31 @@ class PODDescriptionFragment : DialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = PodDescriptionDialogFragmentBinding.inflate(inflater)
+
         return binding.podDescriptionDialogContainer
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.podDescriptionHeader.text = descriptionHeader
-        binding.podDescriptionBody.text = descriptionBody
-        binding.podDescriptionDialogContainer.setOnClickListener {
-            dismiss()
+        binding.apply {
+            podDescriptionHeader.apply {
+                text = descriptionHeader
+                typeface =
+                    Typeface.createFromAsset(
+                        requireActivity().assets,
+                        "folderFont/fontPODDescription/Quicksand_Bold.otf"
+                    )
+            }
+            podDescriptionBody.apply {
+                text = descriptionBody
+                typeface =
+                    Typeface.createFromAsset(
+                        requireActivity().assets,
+                        "folderFont/fontPODDescription/Quicksand_Book.otf"
+                    )
+            }
+            podDescriptionDialogContainer.setOnClickListener {
+                dismiss()
+            }
         }
     }
 }
