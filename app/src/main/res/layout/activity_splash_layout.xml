@@ -4,10 +4,22 @@
     android:layout_height="match_parent">
 
     <ImageView
+        android:id="@+id/splash_iv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/splash_screen_picture"
         android:contentDescription="@string/splash"
         android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/splash_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="50sp"
+        android:text="MaterialYou"
+        android:layout_gravity="center"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        />
 
 </FrameLayout>
