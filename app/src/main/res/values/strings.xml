@@ -24,4 +24,5 @@
     <string name="notes">Notes</string>
     <string name="header">Header</string>
     <string name="add_item">Add item</string>
+    <string name="splash">splash</string>
 </resources>
