@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
-import com.example.materialyou.R
 import com.example.materialyou.databinding.BottomNavigationViewActivityBinding
 import com.example.materialyou.utils.bottomNavigationViewState
 import com.example.materialyou.utils.themeState
@@ -14,6 +13,7 @@ import com.example.materialyou.view.planetsViewPager.PlanetsFragment
 import com.example.materialyou.view.themeChange.ThemeChangeFragment
 
 class MainActivity : AppCompatActivity() {
+
     private lateinit var binding: BottomNavigationViewActivityBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,21 +56,17 @@ class MainActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.bottom_planets -> {
                     navigateTo(PlanetsFragment())
-                    true
                 }
                 R.id.bottom_POD -> {
                     navigateTo(PODFragment())
-                    true
                 }
                 R.id.bottom_change_theme -> {
                     navigateTo(ThemeChangeFragment())
-                    true
                 }
                 R.id.bottom_notes -> {
                     navigateTo(NotesFragment())
-                    true
                 }
-                else -> true
+                else -> navigateTo(PlanetsFragment())
             }
             true
         }

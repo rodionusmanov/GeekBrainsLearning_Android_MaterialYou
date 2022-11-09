@@ -18,6 +18,10 @@
         <item name="textViewTextColor">@color/black</item>
     </style>
 
+    <style name="Splash" parent="Theme.MaterialYou">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+    </style>
+
     <style name="MonoTheme" parent="Theme.MaterialYou">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/dark_grey</item>
