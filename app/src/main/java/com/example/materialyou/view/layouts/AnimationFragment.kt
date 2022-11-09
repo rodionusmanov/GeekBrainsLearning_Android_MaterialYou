@@ -2,14 +2,14 @@ package com.example.materialyou.view.layouts
 
 import android.animation.ObjectAnimator
 import android.os.Bundle
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
-import androidx.transition.*
+import androidx.transition.Fade
+import androidx.transition.TransitionManager
 import com.example.materialyou.databinding.AnimationLayoutBinding
+import com.example.materialyou.utils.*
 
 class AnimationFragment : Fragment() {
 
@@ -38,26 +38,44 @@ class AnimationFragment : Fragment() {
         binding.fab.setOnClickListener {
             isFlag = !isFlag
             val fade = Fade()
-            TransitionManager.beginDelayedTransition(binding.root,fade)
+            TransitionManager.beginDelayedTransition(binding.root, fade)
             if (isFlag) {
-                ObjectAnimator.ofFloat(binding.plusImageview, View.ROTATION, 0f, -600f)
-                    .setDuration(1000L).start()
-                ObjectAnimator.ofFloat(binding.optionOneContainer, View.TRANSLATION_Y, -225f)
-                    .setDuration(1000L).start()
-                ObjectAnimator.ofFloat(binding.optionTwoContainer, View.TRANSLATION_Y, -130f)
-                    .setDuration(1000L).start()
-                binding.optionOneContainer.visibility = View.VISIBLE
-                binding.optionTwoContainer.visibility = View.VISIBLE
+                trueAnimation()
             } else {
-                ObjectAnimator.ofFloat(binding.plusImageview, View.ROTATION, -600f, 0f)
-                    .setDuration(1000L).start()
-                ObjectAnimator.ofFloat(binding.optionOneContainer, View.TRANSLATION_Y, 0f)
-                    .setDuration(1000L).start()
-                ObjectAnimator.ofFloat(binding.optionTwoContainer, View.TRANSLATION_Y, 0f)
-                    .setDuration(1000L).start()
-                binding.optionOneContainer.visibility = View.INVISIBLE
-                binding.optionTwoContainer.visibility = View.INVISIBLE
+                falseAnimation()
             }
         }
+    }
+
+    private fun trueAnimation() {
+        ObjectAnimator.ofFloat(
+            binding.plusImageview,
+            View.ROTATION,
+            startRotationPosition,
+            finishRotationPositionAnimationPODFragment
+        )
+            .setDuration(longDuration).start()
+        ObjectAnimator.ofFloat(binding.optionOneContainer, View.TRANSLATION_Y, activePositionContainerOneY)
+            .setDuration(longDuration).start()
+        ObjectAnimator.ofFloat(binding.optionTwoContainer, View.TRANSLATION_Y, activePositionContainerTwoY)
+            .setDuration(longDuration).start()
+        binding.optionOneContainer.visibility = View.VISIBLE
+        binding.optionTwoContainer.visibility = View.VISIBLE
+    }
+
+    private fun falseAnimation() {
+        ObjectAnimator.ofFloat(
+            binding.plusImageview,
+            View.ROTATION,
+            finishRotationPositionAnimationPODFragment,
+            startRotationPosition
+        )
+            .setDuration(longDuration).start()
+        ObjectAnimator.ofFloat(binding.optionOneContainer, View.TRANSLATION_Y, startPositionY)
+            .setDuration(longDuration).start()
+        ObjectAnimator.ofFloat(binding.optionTwoContainer, View.TRANSLATION_Y, startPositionY)
+            .setDuration(longDuration).start()
+        binding.optionOneContainer.visibility = View.INVISIBLE
+        binding.optionTwoContainer.visibility = View.INVISIBLE
     }
 }

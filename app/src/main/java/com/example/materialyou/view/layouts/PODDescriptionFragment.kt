@@ -52,7 +52,7 @@ class PODDescriptionFragment : DialogFragment() {
         for (i in descriptionBody.indices) {
             spannableStringBody.setSpan(
                 ForegroundColorSpan(
-                    ContextCompat.getColor(requireContext(), rainbowIdColor[i % 36])
+                    ContextCompat.getColor(requireContext(), rainbowIdColor[i % rainbowIdColor.size])
                 ), i, i + 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
             )
         }
