@@ -32,6 +32,5 @@ class PODViewModel(
         override fun onFailure(e: IOException) {
             liveData.postValue(PODViewModelAppState.Error(e))
         }
-
     }
 }

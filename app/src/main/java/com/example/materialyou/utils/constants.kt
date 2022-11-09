@@ -10,6 +10,24 @@ var descriptionBody: String = ""
 var themeState: String = "default_theme"
 var bottomNavigationViewState: Fragment = PlanetsFragment()
 
+const val longDuration = 1000L
+const val shortDuration =500L
+
+const val startRotationPosition = 0f
+const val finishRotationPositionAnimationPODFragment = -600f
+const val finishRotationPositionPODFragment = -135f
+
+const val startPositionY = 0f
+const val activePositionContainerOneY = -225f
+const val activePositionContainerTwoY = -130f
+
+const val activePositionWikiContainerY = 140f
+const val activePositionDescriptionContainerY = 120f
+
+const val startAlpha = 0.0F
+const val activeAlpha = 0.8F
+const val finishAlpha = 1.0F
+
 val rainbowIdColor = arrayOf(
     R.color.rainbowA,
     R.color.rainbowB,

@@ -38,21 +38,26 @@ class PODDescriptionFragment : DialogFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val bitmapEarth =
-            ContextCompat.getDrawable(requireContext(), R.drawable.earth_svg)!!.toBitmap()
-        val spannableStringBody: SpannableString
-        val spannableStringBuilderHeader: SpannableStringBuilder
+        val bitmapEarth = resources.getDrawable(R.drawable.earth_svg, null).toBitmap()
 
-        spannableStringBody = SpannableString(descriptionBody)
-        spannableStringBuilderHeader = SpannableStringBuilder(descriptionHeader)
+        val spannableStringBody = SpannableString(descriptionBody)
+        val spannableStringBuilderHeader = SpannableStringBuilder(descriptionHeader)
 
-        spannableStringBuilderHeader.insert(0,"_")
-        spannableStringBuilderHeader.setSpan(ImageSpan(bitmapEarth), 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannableStringBuilderHeader.insert(0, "_")
+        spannableStringBuilderHeader.setSpan(
+            ImageSpan(bitmapEarth),
+            0,
+            1,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
 
         for (i in descriptionBody.indices) {
             spannableStringBody.setSpan(
                 ForegroundColorSpan(
-                    ContextCompat.getColor(requireContext(), rainbowIdColor[i % 36])
+                    ContextCompat.getColor(
+                        requireContext(),
+                        rainbowIdColor[i % rainbowIdColor.size]
+                    )
                 ), i, i + 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
             )
         }

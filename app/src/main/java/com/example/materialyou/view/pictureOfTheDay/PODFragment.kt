@@ -13,12 +13,10 @@ import androidx.transition.TransitionManager
 import coil.load
 import com.example.materialyou.R
 import com.example.materialyou.databinding.PodFragmentCoordinatorLayoutBinding
-import com.example.materialyou.utils.descriptionBody
-import com.example.materialyou.utils.descriptionHeader
-import com.example.materialyou.utils.wikiRequest
-import com.example.materialyou.view.themeChange.ThemeChangeFragment
+import com.example.materialyou.utils.*
 import com.example.materialyou.view.layouts.PODDescriptionFragment
 import com.example.materialyou.view.layouts.WikiSearchFragment
+import com.example.materialyou.view.themeChange.ThemeChangeFragment
 import com.example.materialyou.viewmodel.PODViewModel
 import com.example.materialyou.viewmodel.PODViewModelAppState
 
@@ -127,35 +125,35 @@ class PODFragment : Fragment() {
     }
 
     private fun trueAnimation() {
-        ObjectAnimator.ofFloat(binding.podFab, View.ROTATION, 0F, -135f).setDuration(1000L)
+        ObjectAnimator.ofFloat(binding.podFab, View.ROTATION, startRotationPosition, finishRotationPositionPODFragment).setDuration(longDuration)
             .start()
-        ObjectAnimator.ofFloat(binding.wikiContainer, View.TRANSLATION_Y, 140f)
-            .setDuration(500L).start()
-        ObjectAnimator.ofFloat(binding.descriptionContainer, View.TRANSLATION_Y, 120f)
-            .setDuration(500L).start()
-        ObjectAnimator.ofFloat(binding.alphaBackground, View.ALPHA, 0.8F).setDuration(500L).start()
+        ObjectAnimator.ofFloat(binding.wikiContainer, View.TRANSLATION_Y, activePositionWikiContainerY)
+            .setDuration(shortDuration).start()
+        ObjectAnimator.ofFloat(binding.descriptionContainer, View.TRANSLATION_Y, activePositionDescriptionContainerY)
+            .setDuration(shortDuration).start()
+        ObjectAnimator.ofFloat(binding.alphaBackground, View.ALPHA, activeAlpha).setDuration(shortDuration).start()
     }
 
     private fun falseAnimation() {
-        ObjectAnimator.ofFloat(binding.podFab, View.ROTATION, -135f, 0f)
-            .setDuration(1000L).start()
-        ObjectAnimator.ofFloat(binding.wikiContainer, View.TRANSLATION_Y, 0f)
-            .setDuration(500L).start()
-        ObjectAnimator.ofFloat(binding.descriptionContainer, View.TRANSLATION_Y, 0f)
-            .setDuration(500L).start()
-        ObjectAnimator.ofFloat(binding.alphaBackground, View.ALPHA, 0.0F).setDuration(500L)
+        ObjectAnimator.ofFloat(binding.podFab, View.ROTATION, finishRotationPositionPODFragment, startRotationPosition)
+            .setDuration(longDuration).start()
+        ObjectAnimator.ofFloat(binding.wikiContainer, View.TRANSLATION_Y, startPositionY)
+            .setDuration(shortDuration).start()
+        ObjectAnimator.ofFloat(binding.descriptionContainer, View.TRANSLATION_Y, startPositionY)
+            .setDuration(shortDuration).start()
+        ObjectAnimator.ofFloat(binding.alphaBackground, View.ALPHA, startAlpha).setDuration(shortDuration)
             .start()
     }
 
     private fun trueFlagOnClickListeners() {
-        binding.wikiContainer.animate().alpha(1.0f).setDuration(500L).setListener(
+        binding.wikiContainer.animate().alpha(finishAlpha).setDuration(shortDuration).setListener(
             object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator) {
                     binding.wikiContainer.isClickable = true
                 }
             }
         )
-        binding.descriptionContainer.animate().alpha(1.0f).setDuration(500L).setListener(
+        binding.descriptionContainer.animate().alpha(finishAlpha).setDuration(shortDuration).setListener(
             object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator) {
                     binding.descriptionContainer.isClickable = true
@@ -173,7 +171,7 @@ class PODFragment : Fragment() {
     }
 
     private fun falseFlagOnClickListeners() {
-        binding.wikiContainer.animate().alpha(0.0f).setDuration(500L).setListener(
+        binding.wikiContainer.animate().alpha(startAlpha).setDuration(shortDuration).setListener(
             object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator) {
                     binding.wikiContainer.isClickable = false
@@ -181,7 +179,7 @@ class PODFragment : Fragment() {
             }
         )
 
-        binding.descriptionContainer.animate().alpha(0.0f).setDuration(500L).setListener(
+        binding.descriptionContainer.animate().alpha(startAlpha).setDuration(shortDuration).setListener(
             object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator) {
                     binding.descriptionContainer.isClickable = false

@@ -12,5 +12,4 @@ data class Data(
     var descriptionText: String = "Description",
     var drawableRes: Int = R.drawable.notes_icon,
     var editNote: Boolean = true
-) {
-}
+)
