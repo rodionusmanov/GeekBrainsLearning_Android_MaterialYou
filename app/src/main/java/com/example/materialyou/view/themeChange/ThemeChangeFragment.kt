@@ -76,5 +76,4 @@ class ThemeChangeFragment : DialogFragment() {
             dismiss()
         }
     }
-
 }

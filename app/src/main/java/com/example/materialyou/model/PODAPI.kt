@@ -10,5 +10,4 @@ interface PODAPI {
     @GET("planetary/apod")
     fun getPictureOfTheDay(@Query("api_key") apiKey: String):
             Call<PODDataTransferObject>
-
 }

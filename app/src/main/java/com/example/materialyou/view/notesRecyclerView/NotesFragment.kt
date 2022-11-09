@@ -6,14 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.materialyou.R
 import com.example.materialyou.databinding.NotesFragmentBinding
 
 class NotesFragment : Fragment() {
-    companion object {
-        fun newInstance() = NotesFragment()
-    }
+
     var data = arrayListOf(
         Data(TYPE_STANDART, "NOTE 1", "description 1", R.drawable.sun, false),
         Data(TYPE_STANDART, "NOTE 2", "description 2", R.drawable.mercury, false),

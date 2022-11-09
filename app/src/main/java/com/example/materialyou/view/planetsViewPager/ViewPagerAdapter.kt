@@ -7,7 +7,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 class ViewPagerAdapter(fragmentActivity: FragmentActivity) :
     FragmentStateAdapter(fragmentActivity) {
 
-    val fragments = arrayOf(
+    private val fragments = arrayOf(
         FragmentSun(),
         FragmentMercury(),
         FragmentVenus(),

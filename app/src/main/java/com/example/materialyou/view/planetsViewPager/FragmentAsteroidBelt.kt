@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.materialyou.R
 
-class FragmentAsteroidBelt() : Fragment() {
+class FragmentAsteroidBelt : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,

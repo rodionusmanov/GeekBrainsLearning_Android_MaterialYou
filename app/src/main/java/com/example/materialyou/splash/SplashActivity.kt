@@ -3,9 +3,6 @@ package com.example.materialyou.splash
 import android.animation.Animator
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.os.PersistableBundle
 import android.view.animation.LinearInterpolator
 import androidx.appcompat.app.AppCompatActivity
 import com.example.materialyou.MainActivity
@@ -50,7 +47,6 @@ class SplashActivity : AppCompatActivity() {
             override fun onAnimationRepeat(p0: Animator?) {
 //                nothing to do
             }
-
         })
 
         binding.splashTv.animate().apply {
@@ -61,9 +57,5 @@ class SplashActivity : AppCompatActivity() {
             rotationBy(-rotationValue)
                 .setInterpolator(LinearInterpolator()).duration = interpolatorDuration
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
     }
 }

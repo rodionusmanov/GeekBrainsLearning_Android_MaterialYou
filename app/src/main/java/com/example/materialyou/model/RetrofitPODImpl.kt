@@ -18,6 +18,7 @@ class RetrofitPODImpl : IRepository{
         retrofitImpl.addConverterFactory(
             GsonConverterFactory.create(GsonBuilder().setLenient().create())
         )
+
         val api = retrofitImpl.build().create(PODAPI::class.java)
         api.getPictureOfTheDay(BuildConfig.NASA_API_KEY).enqueue(object : Callback<PODDataTransferObject>{
             override fun onResponse(
@@ -30,7 +31,7 @@ class RetrofitPODImpl : IRepository{
             }
 
             override fun onFailure(call: Call<PODDataTransferObject>, t: Throwable) {
-//                TODO("Not yet implemented")
+//                nothing to do
             }
         })
     }

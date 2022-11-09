@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.transition.*
 import com.example.materialyou.databinding.FragmentEarthBinding
 
-class FragmentEarth() : Fragment() {
+class FragmentEarth : Fragment() {
 
     private var grown = false
     private lateinit var binding: FragmentEarthBinding
@@ -22,7 +22,7 @@ class FragmentEarth() : Fragment() {
     ): View {
         binding = FragmentEarthBinding.inflate(layoutInflater)
 
-        binding.earthIv.setOnClickListener{
+        binding.earthIv.setOnClickListener {
             grown = !grown
             val params = it.layoutParams as ConstraintLayout.LayoutParams
 
@@ -33,9 +33,9 @@ class FragmentEarth() : Fragment() {
             transitionSet.addTransition(changeBounds)
             transitionSet.addTransition(Slide(Gravity.BOTTOM))
             transitionSet.duration = 2000L
-            TransitionManager.beginDelayedTransition(binding.root,transitionSet)
+            TransitionManager.beginDelayedTransition(binding.root, transitionSet)
 
-            if (grown){
+            if (grown) {
                 params.width = ConstraintLayout.LayoutParams.MATCH_PARENT
                 params.horizontalBias = 0.5F
                 binding.moonIv.visibility = View.GONE

@@ -1,6 +1,5 @@
 package com.example.materialyou.view.notesRecyclerView
 
-import android.view.View
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 
@@ -31,7 +30,7 @@ class ItemTouchHelperCallback(private val callback: ItemTouchHelperAdapter) :
 
     override fun onSelectedChanged(viewHolder: RecyclerView.ViewHolder?, actionState: Int) {
         if (viewHolder is NotesAdapter.ElasticViewHolder) {
-            (viewHolder as NotesAdapter.ElasticViewHolder).onItemSelect()
+            viewHolder.onItemSelect()
         }
         super.onSelectedChanged(viewHolder, actionState)
     }
@@ -39,7 +38,7 @@ class ItemTouchHelperCallback(private val callback: ItemTouchHelperAdapter) :
     override fun clearView(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder) {
         super.clearView(recyclerView, viewHolder)
         if (viewHolder is NotesAdapter.ElasticViewHolder) {
-            (viewHolder as NotesAdapter.ElasticViewHolder).onItemClear()
+            viewHolder.onItemClear()
         }
     }
 }

@@ -11,9 +11,6 @@ import com.example.materialyou.databinding.WikiSearchDialogBinding
 import com.example.materialyou.utils.wikiRequest
 
 class WikiSearchFragment : DialogFragment() {
-    companion object {
-        fun newInstance() = WikiSearchFragment()
-    }
 
     private var _binding: WikiSearchDialogBinding? = null
     private val binding: WikiSearchDialogBinding
