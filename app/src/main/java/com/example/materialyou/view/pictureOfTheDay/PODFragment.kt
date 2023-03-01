@@ -125,23 +125,43 @@ class PODFragment : Fragment() {
     }
 
     private fun trueAnimation() {
-        ObjectAnimator.ofFloat(binding.podFab, View.ROTATION, startRotationPosition, finishRotationPositionPODFragment).setDuration(longDuration)
+        ObjectAnimator.ofFloat(
+            binding.podFab,
+            View.ROTATION,
+            startRotationPosition,
+            finishRotationPositionPODFragment
+        ).setDuration(longDuration)
             .start()
-        ObjectAnimator.ofFloat(binding.wikiContainer, View.TRANSLATION_Y, activePositionWikiContainerY)
+        ObjectAnimator.ofFloat(
+            binding.wikiContainer,
+            View.TRANSLATION_Y,
+            activePositionWikiContainerY
+        )
             .setDuration(shortDuration).start()
-        ObjectAnimator.ofFloat(binding.descriptionContainer, View.TRANSLATION_Y, activePositionDescriptionContainerY)
+        ObjectAnimator.ofFloat(
+            binding.descriptionContainer,
+            View.TRANSLATION_Y,
+            activePositionDescriptionContainerY
+        )
             .setDuration(shortDuration).start()
-        ObjectAnimator.ofFloat(binding.alphaBackground, View.ALPHA, activeAlpha).setDuration(shortDuration).start()
+        ObjectAnimator.ofFloat(binding.alphaBackground, View.ALPHA, activeAlpha)
+            .setDuration(shortDuration).start()
     }
 
     private fun falseAnimation() {
-        ObjectAnimator.ofFloat(binding.podFab, View.ROTATION, finishRotationPositionPODFragment, startRotationPosition)
+        ObjectAnimator.ofFloat(
+            binding.podFab,
+            View.ROTATION,
+            finishRotationPositionPODFragment,
+            startRotationPosition
+        )
             .setDuration(longDuration).start()
         ObjectAnimator.ofFloat(binding.wikiContainer, View.TRANSLATION_Y, startPositionY)
             .setDuration(shortDuration).start()
         ObjectAnimator.ofFloat(binding.descriptionContainer, View.TRANSLATION_Y, startPositionY)
             .setDuration(shortDuration).start()
-        ObjectAnimator.ofFloat(binding.alphaBackground, View.ALPHA, startAlpha).setDuration(shortDuration)
+        ObjectAnimator.ofFloat(binding.alphaBackground, View.ALPHA, startAlpha)
+            .setDuration(shortDuration)
             .start()
     }
 
@@ -153,20 +173,25 @@ class PODFragment : Fragment() {
                 }
             }
         )
-        binding.descriptionContainer.animate().alpha(finishAlpha).setDuration(shortDuration).setListener(
-            object : AnimatorListenerAdapter() {
-                override fun onAnimationEnd(animation: Animator) {
-                    binding.descriptionContainer.isClickable = true
+        binding.descriptionContainer.animate().alpha(finishAlpha).setDuration(shortDuration)
+            .setListener(
+                object : AnimatorListenerAdapter() {
+                    override fun onAnimationEnd(animation: Animator) {
+                        binding.descriptionContainer.isClickable = true
+                    }
                 }
-            }
-        )
+            )
         binding.wikiContainer.setOnClickListener {
             val dialog = WikiSearchFragment()
             dialog.show(requireActivity().supportFragmentManager, "wiki request")
         }
         binding.descriptionContainer.setOnClickListener {
-            val dialog = PODDescriptionFragment()
-            dialog.show(requireActivity().supportFragmentManager, "description request")
+            if (!(nullValidator(descriptionHeader) == null) && !(nullValidator(descriptionBody) == null)) {
+                val dialog = PODDescriptionFragment()
+                dialog.show(requireActivity().supportFragmentManager, "description request")
+            } else {
+                Toast.makeText(requireContext(), "Header or body of description is empty", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -179,12 +204,13 @@ class PODFragment : Fragment() {
             }
         )
 
-        binding.descriptionContainer.animate().alpha(startAlpha).setDuration(shortDuration).setListener(
-            object : AnimatorListenerAdapter() {
-                override fun onAnimationEnd(animation: Animator) {
-                    binding.descriptionContainer.isClickable = false
+        binding.descriptionContainer.animate().alpha(startAlpha).setDuration(shortDuration)
+            .setListener(
+                object : AnimatorListenerAdapter() {
+                    override fun onAnimationEnd(animation: Animator) {
+                        binding.descriptionContainer.isClickable = false
+                    }
                 }
-            }
-        )
+            )
     }
 }

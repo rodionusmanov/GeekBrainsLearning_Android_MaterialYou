@@ -51,15 +51,17 @@ class PODDescriptionFragment : DialogFragment() {
             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
         )
 
-        for (i in descriptionBody.indices) {
-            spannableStringBody.setSpan(
-                ForegroundColorSpan(
-                    ContextCompat.getColor(
-                        requireContext(),
-                        rainbowIdColor[i % rainbowIdColor.size]
-                    )
-                ), i, i + 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-            )
+        descriptionBody?.let {
+            for (i in it.indices) {
+                spannableStringBody.setSpan(
+                    ForegroundColorSpan(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            rainbowIdColor[i % rainbowIdColor.size]
+                        )
+                    ), i, i + 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                )
+            }
         }
 
         binding.apply {
