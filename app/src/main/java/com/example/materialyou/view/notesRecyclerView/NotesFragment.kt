@@ -8,19 +8,11 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.ItemTouchHelper
 import com.example.materialyou.R
 import com.example.materialyou.databinding.NotesFragmentBinding
+import com.example.materialyou.utils.setDefaultNotesData
 
 class NotesFragment : Fragment() {
 
-    var data = arrayListOf(
-        Data(TYPE_STANDART, "NOTE 1", "description 1", R.drawable.sun, false),
-        Data(TYPE_STANDART, "NOTE 2", "description 2", R.drawable.mercury, false),
-        Data(
-            TYPE_HEADER_PICTURE, "NOTE 3", "description 3", R.drawable.earth, false
-        ),
-        Data(
-            TYPE_STANDART, "NOTE 4", "description 4", R.drawable.mars, false
-        )
-    )
+    var data = setDefaultNotesData()
 
     private lateinit var notesAdapter: NotesAdapter
     private var _binding: NotesFragmentBinding? = null

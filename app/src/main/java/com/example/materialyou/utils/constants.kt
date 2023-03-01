@@ -2,11 +2,14 @@ package com.example.materialyou.utils
 
 import androidx.fragment.app.Fragment
 import com.example.materialyou.R
+import com.example.materialyou.view.notesRecyclerView.Data
+import com.example.materialyou.view.notesRecyclerView.TYPE_HEADER_PICTURE
+import com.example.materialyou.view.notesRecyclerView.TYPE_STANDART
 import com.example.materialyou.view.planetsViewPager.PlanetsFragment
 
 var wikiRequest: String = ""
-var descriptionHeader: String = ""
-var descriptionBody: String = ""
+var descriptionHeader: String? = null
+var descriptionBody: String? = null
 var themeState: String = "default_theme"
 var bottomNavigationViewState: Fragment = PlanetsFragment()
 
@@ -65,4 +68,15 @@ val rainbowIdColor = arrayOf(
     R.color.rainbowAh,
     R.color.rainbowAi,
     R.color.rainbowAj
+)
+
+val defaultData = arrayListOf(
+    Data(TYPE_STANDART, "NOTE 1", "description 1", R.drawable.sun, false),
+    Data(TYPE_STANDART, "NOTE 2", "description 2", R.drawable.mercury, false),
+    Data(
+        TYPE_HEADER_PICTURE, "NOTE 3", "description 3", R.drawable.earth, false
+    ),
+    Data(
+        TYPE_STANDART, "NOTE 4", "description 4", R.drawable.mars, false
+    )
 )
