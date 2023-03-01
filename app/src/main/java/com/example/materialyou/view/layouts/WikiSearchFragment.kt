@@ -6,8 +6,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.example.materialyou.databinding.WikiSearchDialogBinding
+import com.example.materialyou.utils.isValidSearch
 import com.example.materialyou.utils.wikiRequest
 
 class WikiSearchFragment : DialogFragment() {
@@ -30,11 +32,15 @@ class WikiSearchFragment : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.wikiDialogInputText.setText(wikiRequest)
         binding.wikiDialogInputLayout.setEndIconOnClickListener {
+            if (isValidSearch(binding.wikiDialogInputText.text.toString())) {
                 startActivity(Intent(Intent.ACTION_VIEW).apply {
                     data =
                         Uri.parse("https://en.wikipedia.org/wiki/${binding.wikiDialogInputText.text.toString()}")
                 })
-            dismiss()
+                dismiss()
+            } else {
+                Toast.makeText(requireContext(), "Request is invalid", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }
